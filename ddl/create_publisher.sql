@@ -3,5 +3,4 @@ CREATE TABLE publisher (
   city  VARCHAR(200) NOT NULL,
   state VARCHAR(20)  NOT NULL,
   PRIMARY KEY pk_pub (pname)
-
 );
