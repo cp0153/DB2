@@ -1,8 +1,8 @@
 # Create bookstore DB
-CREATE DATABASE book_store;
+CREATE DATABASE bookdb;
 
-# Set the DB for the rest of the inserts
-USE book_store;
+# Use the bookstore DB for the rest of the inserts
+USE bookdb;
 
 # People table - Needs to go first!
 CREATE TABLE people (
