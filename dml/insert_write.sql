@@ -1,0 +1,13 @@
+CREATE TABLE writes (
+  ISBN13 INT NOT NULL,
+  aid    INT NOT NULL,
+  PRIMARY KEY (ISBN13, aid),
+  FOREIGN KEY fk_write_book (ISBN13)
+  REFERENCES book (ISBN13)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+  FOREIGN KEY fk_write_author (aid)
+  REFERENCES author (aid)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+);
