@@ -1,13 +1,3 @@
-CREATE TABLE writes (
-  ISBN13 INT NOT NULL,
-  aid    INT NOT NULL,
-  PRIMARY KEY (ISBN13, aid),
-  FOREIGN KEY fk_write_book (ISBN13)
-  REFERENCES book (ISBN13)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT,
-  FOREIGN KEY fk_write_author (aid)
-  REFERENCES author (aid)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT
-);
+# Insert statements for the Write table
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781603092661', '1000000000');    # 'A Matter of Life' by Jeffrey Brown
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781594633669', '1000000001');    # 'The Girl on the Train' by Paula Hawkins

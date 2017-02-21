@@ -1,13 +1,3 @@
-CREATE TABLE book (
-  ISBN13   INT          NOT NULL,
-  title    VARCHAR(200) NOT NULL,
-  year     DATE         NOT NULL,
-  category VARCHAR(200) NOT NULL,
-  pname    VARCHAR(200) NOT NULL,
-  price    DECIMAL      NOT NULL,
-  PRIMARY KEY pk_book (ISBN13),
-  FOREIGN KEY fk_book (pname)
-  REFERENCES publisher (pname)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT
-);
+# Insert statements for Books table
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781603092661', 'A Matter of Life', '2013-07-02', 'Graphic Novels', 'Top Shelf Productions', '14.95');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781594633669', 'The Girl on the Train', '2015-01-13', 'Psychological Thriller', 'Riverhead Books', '11.04');

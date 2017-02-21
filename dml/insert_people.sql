@@ -1,7 +1,3 @@
-CREATE TABLE people (
-  name      VARCHAR(200) NOT NULL,
-  address   VARCHAR(200) NOT NULL,
-  telephone INT          NOT NULL,
-  email     VARCHAR(200) NOT NULL,
-  PRIMARY KEY pk_people(name, address)
-);
+# Insert statements for the People table
+INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Jeffrey Brown', 'Grand Rapids, Michigan', '6165555555', 'jeffrey_brown@gmail.com');
+INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Paula Hawkins', 'London, UK', '0205555555', 'paula_hawkins@gmail.com');
