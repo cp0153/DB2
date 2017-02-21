@@ -12,7 +12,7 @@ INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Antoine 
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('George Orwell', 'London, United Kingdom', '1115555555', 'George_Orwell@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Elena Ferrante', 'Naples, Italy', '1265555555', 'Elena_Ferrante@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('J.K. Rowling', 'London, UK', '9895555555', 'JK_Rowling@gmail.com');
-INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Agatha Christie', 'Paris, France', '4855555555', 'Agatha_Christie@gmail.com')
+INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Agatha Christie', 'Paris, France', '4855555555', 'Agatha_Christie@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Muriel Barbery', 'Lowell, MA', '9785555555', 'Muriel_Barbery@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Jane Doe', 'Bolton, MA', '9785559999', 'Jane_Doe@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('John Doe', 'Andover, MA', '9785556666', 'John_Doe@gmail.com');
