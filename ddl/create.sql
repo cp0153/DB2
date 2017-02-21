@@ -4,16 +4,16 @@ CREATE DATABASE bookdb;
 # Use the bookstore DB for the rest of the inserts
 USE bookdb;
 
-# People table - Needs to go first!
+# People table - Needs to go first.
 CREATE TABLE people (
   name      VARCHAR(200) NOT NULL,
   address   VARCHAR(200) NOT NULL,
-  telephone INT          NOT NULL,
+  telephone BIGINT       NOT NULL,
   email     VARCHAR(200) NOT NULL,
   PRIMARY KEY pk_people(name, address)
 );
 
-# Publisher table - Should go second
+# Publisher table - Should go second.
 CREATE TABLE publisher (
   pname VARCHAR(200) NOT NULL,
   city  VARCHAR(200) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE author (
 
 # Book table
 CREATE TABLE book (
-  ISBN13   INT          NOT NULL,
+  ISBN13   BIGINT       NOT NULL,
   title    VARCHAR(200) NOT NULL,
   year     DATE         NOT NULL,
   category VARCHAR(200) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE customer(
 
 # Purchase table
 CREATE TABLE purchase (
-  ISBN13   INT      NOT NULL,
+  ISBN13   BIGINT   NOT NULL,
   cid      INT      NOT NULL,
   datetime DATETIME NOT NULL,
   PRIMARY KEY pk_pur (ISBN13, cid, datetime),
@@ -78,7 +78,7 @@ CREATE TABLE purchase (
 
 # Writes table
 CREATE TABLE writes (
-  ISBN13 INT NOT NULL,
+  ISBN13 BIGINT NOT NULL,
   aid    INT NOT NULL,
   PRIMARY KEY (ISBN13, aid),
   FOREIGN KEY fk_write_book (ISBN13)
