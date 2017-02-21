@@ -1,3 +1,4 @@
+# Customer table
 CREATE TABLE customer(
   cid int NOT NULL,
   name VARCHAR(200) NOT NULL,

@@ -1,5 +1,6 @@
+# Purchase table
 CREATE TABLE purchase (
-  ISBN13   INT      NOT NULL,
+  ISBN13   BIGINT   NOT NULL,
   cid      INT      NOT NULL,
   datetime DATETIME NOT NULL,
   PRIMARY KEY pk_pur (ISBN13, cid, datetime),

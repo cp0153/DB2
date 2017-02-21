@@ -1,3 +1,4 @@
+# Author table
 CREATE TABLE author (
   aid     INT          NOT NULL,
   name    VARCHAR(200) NOT NULL,

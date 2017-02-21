@@ -1,5 +1,6 @@
+# Writes table
 CREATE TABLE writes (
-  ISBN13 INT NOT NULL,
+  ISBN13 BIGINT NOT NULL,
   aid    INT NOT NULL,
   PRIMARY KEY (ISBN13, aid),
   FOREIGN KEY fk_write_book (ISBN13)
