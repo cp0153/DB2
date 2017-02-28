@@ -1,2 +1,4 @@
-// Record the information that a customr has purchased a book.
+// User input one or more words of a book title,
+// find all information of the books whose titles contain those words.
+
 

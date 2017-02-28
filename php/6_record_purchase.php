@@ -1,2 +1,2 @@
-// Record the information that a customr has purchased a book.
+// Record the information that a customer has purchased a book.
 
