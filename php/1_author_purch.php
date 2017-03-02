@@ -12,7 +12,7 @@
 
   $mydb = mysql_select_db ('bookdb') or die ('Could not select database');
 
-  $query = 'SELECT name from people where ';
+  $query = 'SELECT name from people where people.name = 'Dan Brown';
   $result = mysql_query($query) or die ('Query failed: ' . mysql_error());
 
   echo 'Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Year<br>';
@@ -27,3 +27,4 @@
   mysql_free_result($result);
 
   mysql_close($myconnection);
+?>
