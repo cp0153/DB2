@@ -38,12 +38,16 @@ Doubleday
 4.99
 */
 
+  $author_name = ($_POST['name']);
+  $author_name = mysql_real_escape_string($author_name);
+  echo "name is $author_name <br>";
+
   $myconnection = mysql_connect('localhost', 'root', '')
   or die ('Could not connect: ' . mysql_error());
 
   $mydb = mysql_select_db ('bookdb') or die ('Could not select database');
 
-  $query = "SELECT author.aid from author where author.name = 'Dan Brown'";
+  $query = "SELECT author.aid from author where author.name = '".$author_name."'";
   $result = mysql_query($query) or die ('Query failed: ' . mysql_error());
 
   echo 'Aid<br>';
@@ -54,5 +58,4 @@ Doubleday
   }
 
   mysql_free_result($result);
-
 ?>
