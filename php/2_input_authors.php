@@ -29,6 +29,21 @@ SELECT *
 FROM book
 WHERE `ISBN13` = 9780385537858
 
+
+// Joining all these queries we get:
+
+SELECT author.aid
+FROM author
+WHERE author.name = 'Dan Brown' IN
+  (SELECT ISBN13
+   FROM writes
+   WHERE writes.aid = author.aid IN
+   (
+      SELECT *
+      FROM book
+      WHERE `ISBN13` = ISBN13
+   ))
+
 // Now we have all the info!
 9780385537858
 Inferno
@@ -47,7 +62,9 @@ Doubleday
 
   $mydb = mysql_select_db ('bookdb') or die ('Could not select database');
 
-  $query = "SELECT author.aid from author where author.name = '".$author_name."'";
+  $query = "SELECT author.aid
+            FROM author
+            WHERE author.name = '".$author_name."'";
   $result = mysql_query($query) or die ('Query failed: ' . mysql_error());
 
   echo 'Aid<br>';
