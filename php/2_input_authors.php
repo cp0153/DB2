@@ -10,23 +10,6 @@
  * sudo cp -r . /opt/lampp/htdocs/Books
  */
 
-/**
- * // Joining all these queries we get:
- *
- * SELECT author.aid
- * FROM author
- * WHERE author.name = 'Dan Brown' IN
- * (SELECT ISBN13
- * FROM writes
- * WHERE writes.aid = author.aid IN
- * (
- * SELECT *
- * FROM book
- * WHERE `ISBN13` = ISBN13
- * ))
- *
- */
-
 $author_name = ($_POST['name']);
 echo "The name the user entered: is <b><u>$author_name</u></b> <br><br>";
 
@@ -40,14 +23,8 @@ if (!$my_conn) {
 }
 
 /**
- * This will get the author's aid. 'Dan Brown' is a placeholder.
- * SELECT author.aid
- * FROM author
- * WHERE author.name = 'Dan Brown'
- *
- * This would equal: 1000000004
+ * This will get the author's aid. 'Dan Brown' is an example
  */
-// First get AID
 $query = "SELECT author.aid
           FROM author
           WHERE author.name = '" . $author_name . "'";
@@ -70,12 +47,8 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 echo '<br>';
 
 /**
- * Now we can use the aid in a query on the writes table
- * SELECT ISBN13
- * FROM writes
- * WHERE writes.aid = '1000000004'
+ * Now we can use the aid in a query on the writes table to get an ISBN13.
  */
-// Now use aid to get ISBN13
 $query = "SELECT ISBN13
           FROM writes
           WHERE writes.aid = '" . $aid . "'";
@@ -105,13 +78,9 @@ echo "<br><table>";
 echo "<tr> <td><b>title</b></td> <td><b>year</b></td> <td><b>category</b></td> <td><b>publisher</b></td> <td><b>price</b></td></tr>";
 
 /**
- * Now we have all the ISBN's that author has written. Let's find all their
- * SELECT *
- * FROM book
- * WHERE `ISBN13` = 9780385537858
+ * Now we have all the ISBN's that author has written. Let's find all the books they wrote.
+ * We'll put this into an array of ISBN13 data.
  */
-// Now we have an array of ISBN13 data, so let's get the book data now!
-// We will do a loop of the ISBN13 array
 for($i = 0; $i < sizeof($ISBN13_array); $i++) {
     $query = "SELECT *
               FROM book
@@ -124,8 +93,7 @@ for($i = 0; $i < sizeof($ISBN13_array); $i++) {
         return 0;
     }
 
-    // If the query worked, we can print out all the info for this book!
-    // title, year, category, pname, price
+    // If the query worked, we can print out all the info for this book! Includes: title, year, category, pname, price
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<tr><td>" . $row["title"] . "</td>";
         echo "<td>" . $row["year"] . "</td>";
@@ -136,8 +104,7 @@ for($i = 0; $i < sizeof($ISBN13_array); $i++) {
     }
 }
 
-// End of results table
-echo '</table>';
+echo '</table>';        // End of results table
 
 mysqli_free_result($result);
 mysqli_close($my_conn);
