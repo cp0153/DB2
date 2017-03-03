@@ -55,33 +55,27 @@
 $author_name = ($_POST['name']);
 echo "name is $author_name <br>";
 
-$my_connection = mysqli_connect("localhost", "root", "", "bookdb");
+$my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
-if (!$my_connection) {
+if (!$my_conn) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
 
-echo "Success: A proper connection to MySQL was made! The bookdb database is great." . PHP_EOL;
-echo "Host information: " . mysqli_get_host_info($my_connection) . PHP_EOL;
-
-/*
 $query = "SELECT author.aid
             FROM author
             WHERE author.name = '" . $author_name . "'";
-$result = mysqli_query($query) or die ('Query failed: ' . mysqli_error());
+$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 echo 'Aid<br>';
 
-while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo $row["aid"];
     echo '<br>';
 }
 
 mysqli_free_result($result);
-*/
-
-mysqli_close($my_connection);
+mysqli_close($my_conn);
 ?>
