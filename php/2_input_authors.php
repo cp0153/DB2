@@ -28,7 +28,7 @@
  */
 
 $author_name = ($_POST['name']);
-echo "The name entered: is $author_name <br>";
+echo "The name the user entered: is <b><u>$author_name</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -59,7 +59,7 @@ if (mysqli_num_rows($result) == 0) {
     return 0;
 }
 
-echo 'Aid<br>';
+echo '<b>Aid</b><br>';
 
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $aid = $row["aid"];
@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) == 0) {
     return 0;
 }
 
-echo 'ISBN13<br>';
+echo '<b>ISBN13</b><br>';
 
 $ISBN13_array = array();    // make a new array for ISBN13 data
 $index = 0;
@@ -102,7 +102,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 // Results table
 echo "<br><table>";
-echo "<tr><th>title</th> <th>year</th> <th>category</th> <th>publisher</th> <th>price</th><br>";
+echo "<tr> <td><b>title</b></td> <td><b>year</b></td> <td><b>category</b></td> <td><b>publisher</b></td> <td><b>price</b></td></tr>";
 
 /**
  * Now we have all the ISBN's that author has written. Let's find all their
@@ -127,12 +127,12 @@ for($i = 0; $i < sizeof($ISBN13_array); $i++) {
     // If the query worked, we can print out all the info for this book!
     // title, year, category, pname, price
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        echo "<th><tr>" . $row["title"] . "</tr>";
-        echo "<tr>" . $row["year"] . "</tr>";
-        echo "<tr>" . $row["category"] . "</tr>";
-        echo "<tr>" . $row["pname"] . "</tr>";
-        echo "<tr>" . $row["price"] . "</tr>";
-        echo '<br>';
+        echo "<tr><td>" . $row["title"] . "</td>";
+        echo "<td>" . $row["year"] . "</td>";
+        echo "<td>" . $row["category"] . "</td>";
+        echo "<td>" . $row["pname"] . "</td>";
+        echo "<td>" . $row["price"] . "</td>";
+        echo '</tr>';
     }
 }
 
