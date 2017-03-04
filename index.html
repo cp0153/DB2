@@ -64,7 +64,7 @@
     </ul>
 
     <!-- Query 6 -->
-    <li>Record the information that a customr has purchased a book.</li>
+    <li>Record the information that a CUSTOMER has purchased a book.</li>
     <ul>
         <li>JSON will do this query</li>
     </ul>
@@ -79,7 +79,16 @@
     <li>User input one name and address, update the address in people, and author or customer table if applicable.</li>
     <ul>
         <li>JSON will do this query</li>
+        <li>Take user input, e.g. "Dan Brown", "1 Uni Ave, Lowell, MA, USA"</li>
+        <li>or "Daniel Fuentes", "Lowell, MA""</li>
+        <li>Update the address in the People table, as well as the author or customer table.</li>
     </ul>
+
+    <form action="php/8_input_name.php" method="post">
+        Enter a name: <input type="text" name="name"><br>
+        Enter an address: <input type="text" name="address"><br>
+        <input type="submit">
+    </form>
 
     <!-- Query 9 -->
     <li>Add a new book to the database. If the author and/or the publisher of the new book is not in the database,

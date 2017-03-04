@@ -22,9 +22,7 @@ if (!$my_conn) {
     exit;
 }
 
-/**
- * This will get the author's aid. 'Dan Brown' is an example
- */
+// This will get the author's aid. 'Dan Brown' is an example
 $query = "SELECT author.aid
           FROM author
           WHERE author.name = '" . $author_name . "'";
@@ -46,9 +44,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 echo '<br>';
 
-/**
- * Now we can use the aid in a query on the writes table to get an ISBN13.
- */
+// Now we can use the aid in a query on the writes table to get an ISBN13.
 $query = "SELECT ISBN13
           FROM writes
           WHERE writes.aid = '" . $aid . "'";
@@ -77,10 +73,8 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 echo "<br><table>";
 echo "<tr> <td><b>title</b></td> <td><b>year</b></td> <td><b>category</b></td> <td><b>publisher</b></td> <td><b>price</b></td></tr>";
 
-/**
- * Now we have all the ISBN's that author has written. Let's find all the books they wrote.
- * We'll put this into an array of ISBN13 data.
- */
+/*  Now we have all the ISBN's that author has written. Let's find all the books they wrote.
+    We'll put this into an array of ISBN13 data.  */
 for($i = 0; $i < sizeof($ISBN13_array); $i++) {
     $query = "SELECT *
               FROM book

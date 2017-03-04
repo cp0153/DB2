@@ -22,9 +22,7 @@ if (!$my_conn) {
     exit;
 }
 
-/**
- * This will get the author's aid. 'Dan Brown' is an example
- */
+// This will get all the information about books matching the words the user entered for the book's title.
 $query = "SELECT *
           FROM book
           WHERE book.title LIKE '%" . $title . "%'";
