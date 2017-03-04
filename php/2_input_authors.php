@@ -11,13 +11,13 @@
  */
 
 $author_name = ($_POST['name']);
-echo "The name the user entered: is <b><u>$author_name</u></b> <br><br>";
+echo "The name the user entered is: <b><u>$author_name</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
 if (!$my_conn) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_errno() . PHP_EOL;
     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
@@ -108,4 +108,3 @@ echo '</table>';        // End of results table
 
 mysqli_free_result($result);
 mysqli_close($my_conn);
-?>
