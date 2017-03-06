@@ -7,24 +7,33 @@
  * Find the names of authors who have purchased a book written by themselves. (aid and cid will not be the same).
  */
 
-  $myconnection = mysql_connect('localhost', 'root', '')
-  or die ('Could not connect: ' . mysql_error());
+$my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
-  $mydb = mysql_select_db ('bookdb') or die ('Could not select database');
+if (!$my_conn) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
 
-  $query = "SELECT name from people where people.name = 'Dan Brown'";
-  $result = mysql_query($query) or die ('Query failed: ' . mysql_error());
+// returns the name of the authors who purchased their own book from this store
+$query = "SELECT a.name
+from writes w join author a
+ON w.aid = a.aid
+where a.name in (SELECT name from customer)";
+$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
-  echo 'Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Year<br>';
+echo '<b>Name</b><br>';
+$name_array = array();    // make a new array for ISBN13 data
+$index = 0;
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $name_array[$index] = $row["name"];
+    echo $name_array[$index];
+    echo '<br>';
+    $index++;
+}
 
-  while ($row = mysql_fetch_array ($result, MYSQL_ASSOC)) {
-      echo $row["title"];
-      echo "&nbsp;&nbsp;&nbsp;";
-      echo $row["year"];
-      echo '<br>';
-  }
+mysqli_free_result($result);
 
-  mysql_free_result($result);
-
-  mysql_close($myconnection);
+mysqli_close($my_conn);
 ?>

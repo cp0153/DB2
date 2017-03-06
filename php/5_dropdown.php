@@ -7,23 +7,47 @@
  * Design a drop down menu so user can use it to select a year and find the title of the best selling book of that year.
  */
 
-$myconnection = mysql_connect('localhost', 'root', '')
-or die ('Could not connect: ' . mysql_error());
+$name = ($_POST['year']);
+echo "The words the user entered is: <b><u>$name</u></b> <br><br>";
 
-$mydb = mysql_select_db ('bookdb') or die ('Could not select database');
+$my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
-$query = 'SELECT name from people where ';
-$result = mysql_query($query) or die ('Query failed: ' . mysql_error());
-
-echo 'Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Year<br>';
-
-while ($row = mysql_fetch_array ($result, MYSQL_ASSOC)) {
-    echo $row["title"];
-    echo "&nbsp;&nbsp;&nbsp;";
-    echo $row["year"];
-    echo '<br>';
+if (!$my_conn) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
 }
 
-mysql_free_result($result);
+// this collects all of purchase history of the name provided
+$query = "select max(cnt) as bst, year 
+            from (
+            SELECT count(ISBN13) as cnt, year(datetime) as year 
+            from purchase
+            group by ISBN13
+            ) a";
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
-mysql_close($myconnection);
+// See if the query failed
+if (mysqli_num_rows($result) == 0) {
+    echo "Sorry I couldn't find anyone under $name :'(<br>";
+    return 0;
+}
+
+// Results table
+echo "<br><table>";
+
+echo "<tr> <td><b>best seller</b></td> 
+<td><b>year</b></td> ";
+
+// If the query worked, return name, ISBN, book tile, Category, and price
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    echo "<tr><td>" . $row["bst"] . "</td>";
+    echo "<td>" . $row["year"] . "</td>";
+    echo '</tr>';
+}
+
+echo '</table>';        // End of results table
+
+mysqli_free_result($result);
+mysqli_close($my_conn);

@@ -10,3 +10,4 @@ INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000004', 'Cathy S
 INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000005', 'Leonard B. Cornish', '1661 Sugarfoot Lane Kokomo, IN 46901');
 INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000006', 'Roger J. Weber', '3189 Lynn Street Cambridge, MA 02138');
 INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000007', 'Levi P. Olsen', '756 Hemlock Lane Edinburg, TX 78539');
+INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1000000002',	'Stephen King',	'Portland, Maine');
