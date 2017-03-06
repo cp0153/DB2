@@ -36,7 +36,11 @@ if (mysqli_num_rows($result) == 0) {
 
 // Results table
 echo "<br><table>";
-echo "<tr> <td><b>title</b></td> <td><b>year</b></td> <td><b>category</b></td> <td><b>publisher</b></td> <td><b>price</b></td></tr>";
+echo "<tr> <td><b>title</b></td> 
+<td><b>year</b></td> 
+<td><b>category</b></td> 
+<td><b>publisher</b></td> 
+<td><b>price</b></td></tr>";
 
 // If the query worked, we can print out all the info for this book! Includes: title, year, category, pname, price
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {

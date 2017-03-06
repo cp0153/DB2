@@ -22,39 +22,16 @@ if (!$my_conn) {
     exit;
 }
 
-// This will get the author's aid. 'Dan Brown' is an example
-$query = "SELECT author.aid
-          FROM author
-          WHERE author.name = '" . $author_name . "'";
-$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
+/* Find all the book's that the given author has written.
 
-// See if the query failed
-if (mysqli_num_rows($result) == 0) {
-    echo "Sorry, I couldn't find any books by $author_name :'(<br>";
-    return 0;
-}
-
-echo '<b>Aid</b><br>';
-
-while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    $aid = $row["aid"];
-    echo $aid;
-    echo '<br>';
-}
-
-echo '<br>';
-
-// Now we can use the aid in a query on the writes table to get an ISBN13.
+*/
 $query = "SELECT ISBN13
-          FROM writes
-          WHERE writes.aid = '" . $aid . "'";
-$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
-
-// See if the query failed
-if (mysqli_num_rows($result) == 0) {
-    echo "Query failed, couldn't find any ISBN13's for $author_name! <br>";
-    return 0;
-}
+          FROM writes w JOIN author a
+          ON w.aid = a.aid
+          WHERE w.aid IN (SELECT author.aid
+                          FROM author
+                          WHERE author.name = '" . $author_name . "')";
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 echo '<b>ISBN13</b><br>';
 
@@ -71,7 +48,11 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 // Results table
 echo "<br><table>";
-echo "<tr> <td><b>title</b></td> <td><b>year</b></td> <td><b>category</b></td> <td><b>publisher</b></td> <td><b>price</b></td></tr>";
+echo "<tr> <td><b>title</b></td> 
+<td><b>year</b></td> 
+<td><b>category</b></td> 
+<td><b>publisher</b></td> 
+<td><b>price</b></td></tr>";
 
 /*  Now we have all the ISBN's that author has written. Let's find all the books they wrote.
     We'll put this into an array of ISBN13 data.  */

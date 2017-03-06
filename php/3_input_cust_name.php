@@ -37,7 +37,6 @@ if (mysqli_num_rows($result) == 0) {
 
 // Results table
 echo "<br><table>";
-
 echo "<tr> <td><b>name</b></td> 
 <td><b>ISBN</b></td> 
 <td><b>Date Purchased</b></td> 

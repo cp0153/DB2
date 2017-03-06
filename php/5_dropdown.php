@@ -36,7 +36,6 @@ if (mysqli_num_rows($result) == 0) {
 
 // Results table
 echo "<br><table>";
-
 echo "<tr> <td><b>best seller</b></td> 
 <td><b>year</b></td> ";
 
