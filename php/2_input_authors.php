@@ -37,6 +37,12 @@ $query = "SELECT *
                                                 WHERE author.name = '" . $author_name . "'))";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
+// See if the query failed
+if (mysqli_num_rows($result) == 0) {
+    echo "Sorry, I couldn't find any books written by \"" . $author_name . "\" :'(<br>";
+    return 0;
+}
+
 // Results table
 echo "<br><table>";
 echo "<tr> <td><b>title</b></td> 

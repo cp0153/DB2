@@ -68,11 +68,17 @@
     <li>Record the information that a CUSTOMER has purchased a book.</li>
     <ul>
         <li>JSON will do this query</li>
-        <li>Create some way for customer's to buy books...?</li>
+        <li>Create some way for customer's to buy books.</li>
         <li>Record this info in the purchases table.</li>
         <li>Could create a page that lists all the books, their prices, and allows customers to select books to buy.
             After the customer hits the "buy" button just record their CID, datetime, and the book's ISBN13 number.</li>
+        <li>Placeholder HTML asks for title of Book (e.g. "The Little Prince"), and cid (e.g. "1100000001")</li>
     </ul>
+    <form action="php/6_record_purchase.php" method="post">
+        Enter the book you are purchasing: <input type="text" name="title"><br>
+        Enter your cid: <input type="text" name="cid"><br>
+        <input type="submit">
+    </form>
 
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
@@ -112,6 +118,11 @@
         <li>Find the book's author, count how many books he has. If == 1, then delete the author too.</li>
         <li>Delete the book now that we've searched the for the author.</li>
     </ul>
+
+    <form action="php/10_delete_book.php" method="post">
+        Enter the title of the book you would like to delete: <input type="text" name="title"><br>
+        <input type="submit">
+    </form>
 </ol>
 </body>
 </html>
