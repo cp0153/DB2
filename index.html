@@ -23,8 +23,7 @@
     </form>
 
     <!-- Query 2 -->
-    <li>User input one author name, find all the books written by the author(s).</li>
-    <ul>
+    <li>User input one author name, find all the books written by the author(s).</li><ul>
         <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Take user input, e.g. 'Dan Brown'.</li>
         <li>Find all books written by 'Dan Brown'.</li>
@@ -37,6 +36,15 @@
 
     <!-- Query 3 -->
     <li>User input one customer name, find purchase history of the customer(s).</li>
+    <ul>
+        <li><b>THIS QUERY IS WORKING.</b></li>
+        <li>Take user input, e.g. 'Stephen King'.</li>
+        <li>Find all purchases by 'Stephen King'.</li>
+    </ul>
+    <form action="php/3_input_cust_name.php" method="post">
+        Enter a customer's name: <input type="text" name="name"><br>
+        <input type="submit">
+    </form>
 
     <!-- Query 4 -->
     <li>User input one or more words of a book title, find all information of the books whose titles contain those
@@ -76,6 +84,11 @@
 
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
+    <form action="php/7_new_customer.php" method="post">
+        Enter new customer name: <input type="text" name="name"><br>
+        Enter new customer address: <input type="text" name="address"><br>
+        <input type="submit">
+    </form>
 
     <!-- Query 8 -->
     <li>User input one name and address, update the address in people, and author or customer table if applicable.</li>
