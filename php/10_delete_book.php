@@ -22,6 +22,13 @@ if (!$my_conn) {
     exit;
 }
 
+/**
+ *      First we need to get the book's ISBN13 number.
+ *      Next we need to get the book author's aid number
+ *      Now we can count the author's books and if he has only written 1 book, we delete him.
+ *      Finally, we can delete the book.
+ */
+
 // This will get all the information about books matching the words the user entered for the book's title.
 $query = "SELECT *
           FROM book
@@ -52,16 +59,65 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<td>" . $row["pname"] . "</td>";
     echo "<td>" . $row["price"] . "</td>";
     echo '</tr>';
+
+    $ISBN13 = $row["ISBN13"];   // save the ISBN13 so we can run a query on it later.
 }
 
 echo '</table>';        // End of results table
 
-/*  Now find out how many book's this author has created.
-    if count < 2
-        then delete the author too
-    now delete the book
-*/
+// Get author's AID
+$query = "SELECT writes.aid
+          FROM writes
+          WHERE writes.ISBN13 = '" . $ISBN13 . "'";
+$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
+// Make sure the query worked
+if (mysqli_num_rows($result) == 0) {
+    echo "ERROR: unable to find aid for ISBN13: $ISBN13 :'(<br>";
+    return 0;
+}
+
+// Get the author's aid
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$aid = $row["aid"];
+
+// Print aid
+echo "<br><table>";
+echo "<tr> <td><b>aid</b></td></tr>";
+echo "<tr><td>" . $aid . "</td></tr></table>";
+
+// Get count of author's book's
+$query = "SELECT COUNT(b.ISBN13) 
+          FROM book b 
+          JOIN writes w 
+          ON b.ISBN13 = w.ISBN13 
+          WHERE w.aid = '" . $aid . "'";
+$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
+
+// Make sure the query worked
+if (mysqli_num_rows($result) == 0) {
+    echo "ERROR: unable to get book count for aid: $aid :'(<br>";
+    return 0;
+}
+
+// Get the book count for the author
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$book_count = $row["COUNT(b.ISBN13)"];
+
+// Print book count
+echo "<br><table>";
+echo "<tr> <td><b>Book count for aid " . $aid . "</b></td></tr>";
+echo "<tr><td>" . $book_count . "</td></tr></table><br>";
+
+// If book count < 2 delete author
+if ($book_count < 2) {
+    echo "Since book count is 1, we need to delete this author :'(";
+}
+
+$query = "DELETE FROM author 
+          WHERE author.aid = '" . $aid ."'";
+
+// Now delete the book by ISBN13 number
 
 
 mysqli_free_result($result);

@@ -30,11 +30,11 @@ $query = "SELECT *
           FROM book b JOIN writes w
           ON b.ISBN13 = w.ISBN13
           WHERE b.ISBN13 IN (SELECT ISBN13
-                                FROM writes w JOIN author a
-                                ON w.aid = a.aid
-                                WHERE w.aid IN (SELECT author.aid
-                                                FROM author
-                                                WHERE author.name = '" . $author_name . "'))";
+                             FROM writes w JOIN author a
+                             ON w.aid = a.aid
+                             WHERE w.aid IN (SELECT author.aid
+                                             FROM author
+                                             WHERE author.name = '" . $author_name . "'))";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed

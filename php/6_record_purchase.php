@@ -35,14 +35,14 @@ if (mysqli_num_rows($result) == 0) {
 
 // Results table
 echo "<table>";
-echo "<tr> <td><b>ISBN13</b></td>";
+echo "<tr> <td><b>ISBN13</b> for <b>$title</b></td>";
 
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<tr><td>" . $row["ISBN13"] . "</td></tr>";
     $ISBN13 = $row["ISBN13"];
 }
 
-echo '</table>';        // End of results table
+echo '</table><br>';        // End of results table
 
 // Get the current time for recording the purchase datetime
 $datetime = date_create()->format('Y-m-d H:i:s');
@@ -54,7 +54,8 @@ $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query
 
 // Check to see if the INSERT worked by doing a SELECT * on the purchase table
 $query = "SELECT *
-          FROM purchase";
+          FROM purchase
+          ORDER BY datetime DESC";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
