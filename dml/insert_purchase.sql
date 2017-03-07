@@ -10,4 +10,4 @@ INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781408704950', '4
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '1100000005', '2017-02-21 20:40:30');
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781594633669', '1100000002', '2017-02-17 07:43:56');
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781603092661', '1100000001', '2017-02-16 12:05:43');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781609450786', '1100000007', '2017-02-21 03:28:59');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '1100000002', '2017-02-21 03:28:59');
