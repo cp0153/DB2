@@ -14,9 +14,10 @@
 <p>We need to implement the following queries in PHP:</p>
 <ol>
     <!-- Query 1 -->
-    <li>Find the names of authors who have purchased a book written by themselves. (aid and cid will not be the same).
-
-    </li>
+    <li>Find the names of authors who have purchased a book written by themselves. (aid and cid will not be the same).</li>
+    <ul>
+        <li><b>THIS QUERY IS WORKING.</b></li>
+    </ul>
     <form action="php/1_author_purch.php" method="post">
         <!--Enter an author's name: <input type="text" name="name"><br>-->
         <input type="submit">
@@ -37,6 +38,10 @@
 
     <!-- Query 3 -->
     <li>User input one customer name, find purchase history of the customer(s).</li>
+    <form action="php/3_input_cust_name.php" method="post">
+        Enter an customer's name: <input type="text" name="name"><br>
+        <input type="submit">
+    </form>
 
     <!-- Query 4 -->
     <li>User input one or more words of a book title, find all information of the books whose titles contain those
