@@ -30,7 +30,7 @@ CREATE TABLE author (
   FOREIGN KEY fk_people(name, address)
   REFERENCES people (name, address)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );
 
 # Book table
@@ -45,7 +45,7 @@ CREATE TABLE book (
   FOREIGN KEY fk_book (pname)
   REFERENCES publisher (pname)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );
 
 # Customer table
@@ -57,7 +57,7 @@ CREATE TABLE customer(
   FOREIGN KEY fk_cust (name, address)
   REFERENCES people (name, address)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );
 
 # Purchase table
@@ -69,11 +69,11 @@ CREATE TABLE purchase (
   FOREIGN KEY fk_pur_bk (ISBN13)
   REFERENCES book (ISBN13)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT,
+    ON DELETE CASCADE,
   FOREIGN KEY fk_pur_cust (cid)
   REFERENCES customer (cid)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );
 
 # Writes table
@@ -84,9 +84,9 @@ CREATE TABLE writes (
   FOREIGN KEY fk_write_book (ISBN13)
   REFERENCES book (ISBN13)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT,
+    ON DELETE CASCADE,
   FOREIGN KEY fk_write_author (aid)
   REFERENCES author (aid)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );

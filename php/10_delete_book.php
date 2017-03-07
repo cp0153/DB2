@@ -143,6 +143,4 @@ if (!$result) {
 }
 
 // Finally, we're done!
-
-mysqli_free_result($result);
 mysqli_close($my_conn);

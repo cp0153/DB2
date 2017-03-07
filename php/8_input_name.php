@@ -31,7 +31,7 @@ $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
     echo "Sorry, I couldn't find anyone in the DB with the name: $name :'(<br>";
-    return 0;
+    exit;
 }
 
 // Results table for the Person they want to change.
@@ -44,8 +44,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<tr><td>" . $row["name"] . "</td>";
     echo "<td>" . $row["address"] . "</td>";
     echo "<td>" . $row["telephone"] . "</td>";
-    echo "<td>" . $row["email"] . "</td>";
-    echo '</tr>';
+    echo "<td>" . $row["email"] . "</td></tr>";
 }
 echo '</table><br>';        // End of results table
 
@@ -64,7 +63,7 @@ $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
     echo "Sorry, I couldn't find anyone in the DB with the name: $name :'(<br>";
-    return 0;
+    exit;
 }
 
 // Results table for the Person after the database was updated
@@ -77,8 +76,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<tr><td>" . $row["name"] . "</td>";
     echo "<td>" . $row["address"] . "</td>";
     echo "<td>" . $row["telephone"] . "</td>";
-    echo "<td>" . $row["email"] . "</td>";
-    echo '</tr>';
+    echo "<td>" . $row["email"] . "</td></tr>";
 }
 echo '</table><br>';        // End of results table
 
@@ -108,10 +106,9 @@ else {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<tr> <td>" . $row["aid"] . "</td> ";
         echo "<td>" . $row["name"] . "</td>";
-        echo "<td>" . $row["address"] . "</td>";
-        echo '</tr>';
+        echo "<td>" . $row["address"] . "</td></tr>";
     }
-    echo '</table><br>';        // End of results table
+    echo "</table><br>";        // End of results table
 }
 
 // Try to update the customer table
@@ -140,10 +137,9 @@ else {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<tr> <td>" . $row["cid"] . "</td> ";
         echo "<td>" . $row["name"] . "</td>";
-        echo "<td>" . $row["address"] . "</td>";
-        echo '</tr>';
+        echo "<td>" . $row["address"] . "</td></tr>";
     }
-    echo '</table><br>';        // End of results table
+    echo "</table><br>";        // End of results table
 }
 
 mysqli_free_result($result);
