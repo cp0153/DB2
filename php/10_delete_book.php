@@ -106,7 +106,7 @@ echo "<tr><td>" . $book_count . "</td></tr></table><br>";
 
 // If book count < 2 delete author
 if ($book_count < 2) {
-    echo "Since book count is 1, we need to delete this author :'(";
+    echo "Since book count is 1, we need to delete this author :'( <br>";
 
     // First delete the author's person entry
     $query = "DELETE FROM people
