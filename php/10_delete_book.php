@@ -24,12 +24,14 @@ if (!$my_conn) {
 
 /**
  *      First we need to get the book's ISBN13 number.
- *      Next we need to get the book author's aid number
- *      Now we can count the author's books and if he has only written 1 book, we delete him.
+ *      Next we need to get the book author's aid number, and his or her name.
+ *      Now we can count the author's books and if he or she has only written 1 book, we delete their
+ *      entry in the People table, and in the Author table. We must delete the People row first, and THEN
+ *      we can delete their Author table row.
  *      Finally, we can delete the book.
  */
 
-// This will get all the information about books matching the words the user entered for the book's title.
+// This query will get the book's ISBN13 number.
 $query = "SELECT *
           FROM book
           WHERE book.title = '" . $title . "'";
@@ -42,57 +44,50 @@ if (mysqli_num_rows($result) == 0) {
 }
 
 // Results table
-echo "<br><table>";
-echo "<tr> <td><b>ISBN13</b></td>
-<td><b>title</b></td> 
-<td><b>year</b></td> 
-<td><b>category</b></td> 
-<td><b>publisher</b></td> 
-<td><b>price</b></td></tr>";
+echo "<table><tr> <td><b>ISBN13</b></td>
+<td><b>title</b></td></tr>";
 
 // If the query worked, we can print out all the info for this book! Includes: title, year, category, pname, price
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<tr><td>" . $row["ISBN13"] . "</td>";
-    echo "<td>" . $row["title"] . "</td>";
-    echo "<td>" . $row["year"] . "</td>";
-    echo "<td>" . $row["category"] . "</td>";
-    echo "<td>" . $row["pname"] . "</td>";
-    echo "<td>" . $row["price"] . "</td>";
-    echo '</tr>';
-
+    echo "<td>" . $row["title"] . "</td></tr>";
     $ISBN13 = $row["ISBN13"];   // save the ISBN13 so we can run a query on it later.
 }
 
 echo '</table>';        // End of results table
 
-// Get author's AID
-$query = "SELECT writes.aid
-          FROM writes
-          WHERE writes.ISBN13 = '" . $ISBN13 . "'";
+// This query will get the author's AID and name
+$query = "SELECT w.aid, a.name
+          FROM writes w JOIN author a
+          ON w.aid = a.aid
+          WHERE w.aid IN (SELECT writes.aid
+	                      FROM writes
+                          WHERE writes.ISBN13 = '" . $ISBN13 . "')";
 $result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // Make sure the query worked
 if (mysqli_num_rows($result) == 0) {
-    echo "ERROR: unable to find aid for ISBN13: $ISBN13 :'(<br>";
+    echo "ERROR: unable to find the aid and author's name for ISBN13: $ISBN13 :'(<br>";
     return 0;
 }
 
-// Get the author's aid
+// Get the author's aid and name
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $aid = $row["aid"];
+$author_name = $row["name"];
 
 // Print aid
 echo "<br><table>";
-echo "<tr> <td><b>aid</b></td></tr>";
-echo "<tr><td>" . $aid . "</td></tr></table>";
+echo "<tr> <td><b>aid</b></td>    <td><b>name</b></td> </tr>";
+echo "<tr> <td>" . $aid . "</td>  <td>" . $author_name . "</td> </tr></table>";
 
-// Get count of author's book's
+// This query will get a count of the author's book's
 $query = "SELECT COUNT(b.ISBN13) 
           FROM book b 
           JOIN writes w 
           ON b.ISBN13 = w.ISBN13 
           WHERE w.aid = '" . $aid . "'";
-$result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // Make sure the query worked
 if (mysqli_num_rows($result) == 0) {
@@ -112,13 +107,42 @@ echo "<tr><td>" . $book_count . "</td></tr></table><br>";
 // If book count < 2 delete author
 if ($book_count < 2) {
     echo "Since book count is 1, we need to delete this author :'(";
+
+    // First delete the author's person entry
+    $query = "DELETE FROM people
+              WHERE people.name = '" . $author_name . "'";
+    $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
+
+    // Make sure the query was successful!
+    if (!$result) {
+        echo "ERROR: unable to delete the people entry for author: $author_name!";
+        return 0;
+    }
+
+    // Now we can delete the author.
+    $query = "DELETE FROM author 
+              WHERE author.aid = '" . $aid ."'";
+    $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
+
+    // Make sure the query was successful!
+    if (!$result) {
+        echo "ERROR: unable to delete the author entry for author: $author_name!";
+        return 0;
+    }
 }
 
-$query = "DELETE FROM author 
-          WHERE author.aid = '" . $aid ."'";
+// Now we can delete the book by ISBN13 number
+$query = "DELETE FROM book
+          WHERE book.ISBN13 = '" . $ISBN13 .  "'";
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
-// Now delete the book by ISBN13 number
+// Make sure the query was successful!
+if (!$result) {
+    echo "ERROR: unable to delete book: $ISBN13!";
+    return 0;
+}
 
+// Finally, we're done!
 
 mysqli_free_result($result);
 mysqli_close($my_conn);
