@@ -22,11 +22,11 @@ if (!$my_conn) {
 // this collects all of purchase history of the name provided
 $query = "SELECT c.name, p.ISBN13, p.datetime, b.title, b.category, b.price
             FROM customer c
-            JOIN purchase p
-            ON c.cid = p.cid
-            JOIN book b
-            ON p.ISBN13 = b.ISBN13
-            WHERE c.name = '". $name ."'";
+              JOIN purchase p
+              ON c.cid = p.cid
+              JOIN book b
+              ON p.ISBN13 = b.ISBN13
+            WHERE c.name = '" . $name . "'";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed

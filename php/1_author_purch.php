@@ -24,7 +24,7 @@ where a.name in (SELECT name from customer)";
 $result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 echo '<b>Name</b><br>';
-$name_array = array();    // make a new array for ISBN13 data
+$name_array = array();    // make a new array to present results
 $index = 0;
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $name_array[$index] = $row["name"];

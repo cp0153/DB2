@@ -7,8 +7,15 @@
  * Add a new customer to the database.
  */
 
-$name = ($_POST['year']);
-echo "The words the user entered is: <b><u>$name</u></b> <br><br>";
+$name = ($_POST['name']);
+$address = ($_POST['address']);
+echo "The words the user entered is: <b><u>$name</u></b> <b><u>$address</u></b><br><br>";
+
+// generate new cid
+$cid = "SELECT FLOOR(RAND() * 99999) AS cid
+        FROM customer
+        WHERE cid NOT IN (SELECT cid FROM customer)
+        LIMIT 1";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -20,7 +27,7 @@ if (!$my_conn) {
 }
 
 // this collects all of purchase history of the name provided
-$query = "INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('$', '$', '$')";
+$query = "INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('" . $cid . "', '" . $name . "', '" . $address . "')";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
