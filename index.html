@@ -19,7 +19,6 @@
         <li><b>THIS QUERY IS WORKING.</b></li>
     </ul>
     <form action="php/1_author_purch.php" method="post">
-        <!--Enter an author's name: <input type="text" name="name"><br>-->
         <input type="submit">
     </form>
 
@@ -62,6 +61,15 @@
     <li>Design a drop down menu so user can use it to select a year and find the title of the best selling book of that
         year.
     </li>
+
+    <form action="php/5_dropdown.php" method="post">
+        <select name="years">
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+        </select>
+        <input type="submit">
+    </form>
 
     <!-- Query 6 -->
     <li>Record the information that a CUSTOMER has purchased a book.</li>
