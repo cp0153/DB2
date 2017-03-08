@@ -23,7 +23,7 @@ CREATE TABLE publisher (
 
 # Author table
 CREATE TABLE author (
-  aid     INT          NOT NULL,
+  aid     INT          NOT NULL AUTO_INCREMENT,
   name    VARCHAR(200) NOT NULL,
   address VARCHAR(200) NOT NULL,
   PRIMARY KEY (aid),
@@ -32,6 +32,8 @@ CREATE TABLE author (
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );
+
+ALTER TABLE author AUTO_INCREMENT = 30000;
 
 # Book table
 CREATE TABLE book (
@@ -59,6 +61,8 @@ CREATE TABLE customer(
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );
+
+ALTER TABLE customer AUTO_INCREMENT = 10000;
 
 # Purchase table
 CREATE TABLE purchase (

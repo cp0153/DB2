@@ -10,5 +10,5 @@ CREATE TABLE book (
   FOREIGN KEY fk_book (pname)
   REFERENCES publisher (pname)
     ON UPDATE CASCADE
-    ON DELETE RESTRICT
+    ON DELETE CASCADE
 );
