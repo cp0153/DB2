@@ -12,9 +12,8 @@
 <h1>Database II Project</h1>
 
 <p>We need to implement the following queries in PHP:</p>
-<ol>
 
-    <br><br />
+<ol>
     <!-- Query 1 -->
     <li>Find the names of authors who have purchased a book written by themselves. (aid and cid will not be the same).
     </li>
@@ -25,7 +24,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 2 -->
     <li>User input one author name, find all the books written by the author(s).</li><ul>
         <li><b>THIS QUERY IS WORKING.</b></li>
@@ -38,7 +37,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 3 -->
     <li>User input one customer name, find purchase history of the customer(s).</li>
     <ul>
@@ -51,7 +50,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 4 -->
     <li>User input one or more words of a book title, find all information of the books whose titles contain those
         words.
@@ -67,36 +66,31 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 5 -->
     <li>Design a drop down menu so user can use it to select a year and find the title of the best selling book of that
         year.
         <ul>
             <li><b>THIS QUERY IS WORKING.</b></li>
-            <li>Take user input, of dynamically populated dropdown menu</li>
+            <li>Take user input, the selected option of a dynamically populated dropdown menu</li>
             <li>prints the name of the best selling book in that year</li>
         </ul>
     </li>
 
-
     <form action="php/5_dropdown.php" method="post">
-            <select name="years" id="years">
-                <?php include ('php/dropdown_menu.php'); ?>
-                </select>
-
+        <select name="years" id="years">
+            <?php include ('php/dropdown_menu.php'); ?>
+        </select>
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 6 -->
     <li>Record the information that a CUSTOMER has purchased a book.</li>
     <ul>
         <li><b>THIS QUERY IS WORKING.</b></li>
-        <li>Create some way for customer's to buy books.</li>
-        <li>Record this info in the purchases table.</li>
-        <li>Could create a page that lists all the books, their prices, and allows customers to select books to buy.
-            After the customer hits the "buy" button just record their CID, datetime, and the book's ISBN13 number.</li>
-        <li>Placeholder HTML asks for title of Book (e.g. "The Little Prince"), and cid (e.g. "1100000001")</li>
+        <li>Customer enters the book title, e.g. "The Little Prince"</li>
+        <li>They also enter their CID #, e.g. "10002"</li>
     </ul>
     <form action="php/6_record_purchase.php" method="post">
         Enter the book you are purchasing: <input type="text" name="title"><br>
@@ -104,7 +98,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
     <ul>
@@ -120,7 +114,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 8 -->
     <li>User input one name and address, update the address in people, and author or customer table if applicable.</li>
     <ul>
@@ -136,7 +130,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 9 -->
     <li>Add a new book to the database. If the author and/or the publisher of the new book is not in the database,
         insert all information about the author and/or publisher as well.
@@ -160,7 +154,7 @@
         <input type="submit">
     </form>
 
-    <br><br />
+    <br>
     <!-- Query 10 -->
     <li>Delete a book. If the author of the book has not written other books, delete the author as well.</li>
     <ul>

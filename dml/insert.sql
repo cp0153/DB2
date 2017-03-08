@@ -105,8 +105,9 @@ INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '1
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '10005', '2016-09-22 00:00:00');
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '10007', '2016-06-07 08:00:00');
 INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537861', '10008', '2015-09-08 05:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537862', '10002', '2015-09-17 06:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '10002', '2015-02-21 20:40:30');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537862', '10011', '2015-09-17 06:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '10011', '2015-02-21 20:40:30');
+
 # Insert statements for the Write table
 INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781603092661', '30000');
 INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781594633669', '30001');

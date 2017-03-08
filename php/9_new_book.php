@@ -9,16 +9,18 @@
  *
  */
 
-//ISBN13 entered: 9780007117116
-//ISBN13 entered: The Fellowship of the Ring the Lord of the Rings
-//ISBN13 entered: 1955
-//ISBN13 entered: Epic High Fantasy
-//ISBN13 entered: George Allen & Unwin
-//ISBN13 entered: 199.99
-//ISBN13 entered: J. R. R. Tolkien
-//ISBN13 entered: UK
-//ISBN13 entered: South West England
-//ISBN13 entered: UK
+//    ISBN13 entered: 9780007117116
+//     Title entered: The Fellowship of the Ring the Lord of the Rings
+//      Year entered: 1955
+//  Category entered: Epic High Fantasy
+//Publisher  entered: George Allen & Unwin
+//     Price entered: 199.99
+// Auth Name entered: J. R. R. Tolkien
+//Auth addre entered: UK
+//Auth phone entered: 5555555555
+//Auth email entered: jrr_tolkien@gmail.com
+//  Pub city entered: South West England
+// Pub state entered: UK
 
 $isbn13 = ($_POST['isbn13']);
 echo "ISBN13 entered: <b><u>$isbn13</u></b><br>";
@@ -124,8 +126,8 @@ if (mysqli_num_rows($book_result) == 0) {
     or die (mysqli_error($my_conn) . 'Book insert Query failed: ');
     // finally add relevant writes entry
     $aid_query = "SELECT aid
-              FROM author
-              WHERE name = '$name'";
+                  FROM author
+                  WHERE name = '$name'";
     $aid_result = mysqli_query($my_conn, $aid_query) or die (mysqli_error($my_conn) . 'Book check failed: ');
 
     $write_insert = "INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('$isbn13', '$aid_result')";

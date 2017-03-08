@@ -24,36 +24,36 @@ if (!$my_conn) {
 
 // check if new customer is already in the people database, if not create entry
 $people_check = "SELECT name 
-                 FROM PEOPLE 
+                 FROM people 
                  WHERE name = '" . $name . "'";
 $people_result = mysqli_query($my_conn, $people_check) or die (mysqli_error($my_conn) . 'People Query failed: ');
+
+if (!$people_result) {
+    echo "ERROR: SELECT name query failed.";
+    return -1;
+}
 
 // if empty, create a new people entry first
 if (mysqli_num_rows($people_result) == 0) {
     $insert_people = "INSERT INTO `people` (`name`, `address`, `telephone`, `email`)
                       VALUES  ('". $name ."', '". $address . "', '". $telephone ."',  '". $email ."')";
     $people_insert_result = mysqli_query($my_conn, $insert_people) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
+
+    if (!$people_insert_result) {
+        echo "ERROR: unable to insert person into the people table.";
+        return -1;
+    }
 }
 
 // Then insert into customer
 $cust_insert = "INSERT INTO `customer` (`name`, `address`) VALUES ('" . $name . "', '" . $address . "')";
-$cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
+$cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . '<br>Customer insert Query failed! ');
+
+if (!$cust_insert_result) {
+    echo "ERROR: unable to insert customer into the customer table.";
+    return -1;
+}
 
 echo "Entered data successfully\n";
-// Results table
-//echo "<br><table>";
-//echo "<tr> <td><b>best seller</b></td>
-//<td><b>year</b></td> ";
 
-// If the query worked, show new customer entry
-//while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-//    echo "<tr><td>" . $row["cid"] . "</td>";
-//    echo "<td>" . $row["name"] . "</td>";
-//    echo "<td>" . $row["address"] . "</td>";
-//    echo '</tr>';
-//}
-//
-//echo '</table>';        // End of results table
-
-//mysqli_free_result($result);
 mysqli_close($my_conn);
