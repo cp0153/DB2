@@ -80,7 +80,7 @@
 
 
     <form action="php/5_dropdown.php" method="post">
-            <select name="years">
+            <select name="years" id="years">
                 <?php include ('php/dropdown_menu.php'); ?>
                 </select>
 
