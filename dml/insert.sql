@@ -44,17 +44,18 @@ INSERT INTO `publisher` (`pname`, `city`, `state`) VALUES ('Cengage Learning', '
 
 # Now we can insert Authors
 # Insert statements for Authors table
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000000', 'Jeffrey Brown', 'Grand Rapids, Michigan');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000001', 'Paula Hawkins', 'London, UK');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000002', 'Stephen King', 'Portland, Maine');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000003', 'Donna Tartt', 'Greenwood, Mississippi');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000004', 'Dan Brown', 'Exeter, New Hampshire');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000005', 'Agatha Christie', 'Paris, France');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000006', 'Muriel Barbery', 'Lowell, MA');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000007', 'J.K. Rowling', 'London, UK');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000008', 'Antoine de Saint-Exupery', 'Lyon, France');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000009', 'George Orwell', 'London, United Kingdom');
-INSERT INTO `author` (`aid`, `name`, `address`) VALUES ('1000000010', 'Elena Ferrante', 'Naples, Italy');
+INSERT INTO `author` (`name`, `address`) VALUES ('Jeffrey Brown', 'Grand Rapids, Michigan');
+INSERT INTO `author` (`name`, `address`) VALUES ('Paula Hawkins', 'London, UK');
+INSERT INTO `author` (`name`, `address`) VALUES ('Stephen King', 'Portland, Maine');
+INSERT INTO `author` (`name`, `address`) VALUES ('Donna Tartt', 'Greenwood, Mississippi');
+INSERT INTO `author` (`name`, `address`) VALUES ('Dan Brown', 'Exeter, New Hampshire');
+INSERT INTO `author` (`name`, `address`) VALUES ('Agatha Christie', 'Paris, France');
+INSERT INTO `author` (`name`, `address`) VALUES ('Muriel Barbery', 'Lowell, MA');
+INSERT INTO `author` (`name`, `address`) VALUES ('J.K. Rowling', 'London, UK');
+INSERT INTO `author` (`name`, `address`) VALUES ('Antoine de Saint-Exupery', 'Lyon, France');
+INSERT INTO `author` (`name`, `address`) VALUES ('George Orwell', 'London, United Kingdom');
+INSERT INTO `author` (`name`, `address`) VALUES ('Elena Ferrante', 'Naples, Italy');
+
 
 # Insert statements for Books table
 INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781603092661', 'A Matter of Life', '2013-07-02', 'Graphic Novels', 'Top Shelf Productions', '14.95');
@@ -74,51 +75,51 @@ INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VAL
 INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781609450786', 'My Brilliant Friend', '2012-11-10', 'Fiction', 'Wiley', '7.99');
 
 # Insert statements for the customer table
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('0000000001', 'Jane Doe', 'Bolton, MA');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('0000000002', 'John Doe', 'Andover, MA');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('0000000003', 'Daniel Fuentes', 'Cologne, MN');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('0000000004', 'Ida J. Young', '4464 Irish Lane Madison, WI 53703');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000001', 'Ida B. Kohn', '2097 Old House Drive Worthington, OH 43085');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000002', 'Ted S. Solt', '3218 Juniper Drive Mount Pleasant, MI 48858');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000003', 'Tiffanie H. Birdsall', '3891 Strother Street Birmingham, AL 35209');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000004', 'Cathy S. Castillo', '4 Crummit Lane Mahaska, NE 66955');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000005', 'Leonard B. Cornish', '1661 Sugarfoot Lane Kokomo, IN 46901');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000006', 'Roger J. Weber', '3189 Lynn Street Cambridge, MA 02138');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1100000007', 'Levi P. Olsen', '756 Hemlock Lane Edinburg, TX 78539');
-INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('1000000002',	'Stephen King',	'Portland, Maine');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Jane Doe', 'Bolton, MA');
+INSERT INTO `customer` (`name`, `address`) VALUES ('John Doe', 'Andover, MA');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Daniel Fuentes', 'Cologne, MN');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Ida J. Young', '4464 Irish Lane Madison, WI 53703');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Ida B. Kohn', '2097 Old House Drive Worthington, OH 43085');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Ted S. Solt', '3218 Juniper Drive Mount Pleasant, MI 48858');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Tiffanie H. Birdsall', '3891 Strother Street Birmingham, AL 35209');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Cathy S. Castillo', '4 Crummit Lane Mahaska, NE 66955');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Leonard B. Cornish', '1661 Sugarfoot Lane Kokomo, IN 46901');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Roger J. Weber', '3189 Lynn Street Cambridge, MA 02138');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Levi P. Olsen', '756 Hemlock Lane Edinburg, TX 78539');
+INSERT INTO `customer` (`name`, `address`) VALUES ('Stephen King',	'Portland, Maine');
 
 # Insert statements for the Purchase table
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537858', '2', '2017-02-06 00:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781603092661', '1100000004', '2017-01-04 00:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780007527502', '2', '2017-02-03 08:22:45');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780156012195', '1100000003', '2017-02-05 00:31:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537858', '1', '2017-02-07 07:32:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780452284234', '1100000006', '2017-02-06 18:24:39');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780545010221', '1100000004', '2017-02-04 12:19:29');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781408704950', '4', '2017-02-15 06:35:21');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '1100000005', '2017-02-21 20:40:30');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781594633669', '1100000002', '2017-02-17 07:43:56');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781603092661', '1100000001', '2017-02-16 12:05:43');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '1100000002', '2017-02-21 03:28:59');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '1100000003', '2016-09-07 00:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '1100000004', '2016-09-22 00:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '1100000006', '2016-06-07 08:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537861', '1100000003', '2015-09-08 05:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537862', '2', '2015-09-17 06:00:00');
-INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '1100000005', '2015-02-21 20:40:30');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537858', '10001', '2017-02-06 00:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781603092661', '10002', '2017-01-04 00:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780007527502', '10003', '2017-02-03 08:22:45');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780156012195', '10004', '2017-02-05 00:31:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537858', '10005', '2017-02-07 07:32:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780452284234', '10006', '2017-02-06 18:24:39');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780545010221', '10007', '2017-02-04 12:19:29');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781408704950', '10008', '2017-02-15 06:35:21');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '10009', '2017-02-21 20:40:30');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781594633669', '10001', '2017-02-17 07:43:56');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781603092661', '10002', '2017-02-16 12:05:43');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '10003', '2017-02-21 03:28:59');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '10004', '2016-09-07 00:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '10005', '2016-09-22 00:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537860', '10007', '2016-06-07 08:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537861', '10008', '2015-09-08 05:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9780385537862', '10002', '2015-09-17 06:00:00');
+INSERT INTO `purchase` (`ISBN13`, `cid`, `datetime`) VALUES ('9781476754451', '10002', '2015-02-21 20:40:30');
 # Insert statements for the Write table
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781603092661', '1000000000');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781594633669', '1000000001');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781476754451', '1000000002');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781408704950', '1000000003');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537858', '1000000004');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537859', '1000000004');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537860', '1000000004');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537861', '1000000004');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537862', '1000000004');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780007527502', '1000000005');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781933372600', '1000000006');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780545010221', '1000000007');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780156012195', '1000000008');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780452284234', '1000000009');
-INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781609450786', '1000000010');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781603092661', '30000');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781594633669', '30001');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781476754451', '30002');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781408704950', '30003');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537858', '30004');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537859', '30004');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537860', '30004');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537861', '30004');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780385537862', '30004');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780007527502', '30005');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781933372600', '30006');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780545010221', '30007');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780156012195', '30008');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9780452284234', '30009');
+INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('9781609450786', '30010');

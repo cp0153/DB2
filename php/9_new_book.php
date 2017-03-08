@@ -9,35 +9,53 @@
  *
  */
 
+//ISBN13 entered: 9780007117116
+//ISBN13 entered: The Fellowship of the Ring the Lord of the Rings
+//ISBN13 entered: 1955
+//ISBN13 entered: Epic High Fantasy
+//ISBN13 entered: George Allen & Unwin
+//ISBN13 entered: 199.99
+//ISBN13 entered: J. R. R. Tolkien
+//ISBN13 entered: UK
+//ISBN13 entered: South West England
+//ISBN13 entered: UK
+
 $isbn13 = ($_POST['isbn13']);
 echo "ISBN13 entered: <b><u>$isbn13</u></b><br>";
 
 $title = ($_POST['title']);
-echo "ISBN13 entered: <b><u>$title</u></b><br>";
+echo "title entered: <b><u>$title</u></b><br>";
 
 $year = ($_POST['year']);
-echo "ISBN13 entered: <b><u>$year</u></b><br>";
+echo "year entered: <b><u>$year</u></b><br>";
 
 $category = ($_POST['category']);
-echo "ISBN13 entered: <b><u>$category</u></b><br>";
+echo "category entered: <b><u>$category</u></b><br>";
 
 $pname = ($_POST['pname']);
-echo "ISBN13 entered: <b><u>$pname</u></b><br>";
+echo "pname entered: <b><u>$pname</u></b><br>";
 
 $price = ($_POST['price']);
-echo "ISBN13 entered: <b><u>$price</u></b><br>";
+echo "price entered: <b><u>$price</u></b><br>";
 
 $name = ($_POST['name']);
-echo "ISBN13 entered: <b><u>$name</u></b><br>";
+echo "author name entered: <b><u>$name</u></b><br>";
 
 $address = ($_POST['address']);
-echo "ISBN13 entered: <b><u>$address</u></b><br>";
+echo "author address entered: <b><u>auth_address</u></b><br>";
+
+$telephone = ($_POST['telephone']);
+echo "telephone entered: <b><u>$telephone</u></b><br><br>";
+
+$eamil = ($_POST['email']);
+echo "email entered: <b><u>$eamil</u></b><br><br>";
+
+$city = ($_POST['city']);
+echo "publisher address entered: <b><u>$city</u></b><br>";
 
 $state = ($_POST['state']);
-echo "ISBN13 entered: <b><u>$state</u></b><br>";
+echo "publisher state entered: <b><u>$state</u></b><br>";
 
-$address = ($_POST['address']);
-echo "ISBN13 entered: <b><u>$address</u></b><br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -49,38 +67,70 @@ if (!$my_conn) {
 }
 
 // this collects all of purchase history of the name provided
-$query1 = "INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('$isbn13', '$title', '$year', '$category', '$pname', '$price')";
 
-$query2 = "INSERT INTO `author` (`name`, `address`) VALUES ('$name', '$address')";
+$people_insert = "INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('$name', '$address', '$telephone', '$eamil')";
 
-$query3 = "INSERT INTO `publisher` (`pname`, `city`, `state`) VALUES ('$pname', '$state', '$address')";
+$pub_insert = "INSERT INTO `publisher` (`pname`, `city`, `state`) VALUES ('$pname', '$state', '$city')";
 
-// Insert the author
-$result = mysqli_query($my_conn, $query2) or die (mysqli_error($my_conn) . 'Query failed: ');
+$auth_insert = "INSERT INTO `author` (`name`, `address`) VALUES ('$name', '$address')";
 
-// See if the query failed
-if (mysqli_num_rows($result) == FALSE) {
-    echo "Sorry I couldn't insert the author " . $name . " :'(<br>";
-    return 0;
+$book_insert = "INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('$isbn13', '$title', '$year', '$category', '$pname', '$price')";
+
+// check if new author is already in the people database, if not create entry
+$people_check = "SELECT name 
+                 FROM people 
+                 WHERE name = '" . $name . "'";
+
+$auth_check = "SELECT name 
+               FROM author 
+               WHERE name = '" . $name . "'";
+
+$publisher_check = "SELECT pname 
+                    FROM publisher 
+                    WHERE pname = '" . $pname . "'";
+
+$book_check = "SELECT title 
+                    FROM book 
+                    WHERE title = '" . $title . "'";
+
+$people_result = mysqli_query($my_conn, $people_check) or die (mysqli_error($my_conn) . 'People check failed: ');
+$auth_result = mysqli_query($my_conn, $auth_check) or die (mysqli_error($my_conn) . 'Author check failed: ');
+$pub_result = mysqli_query($my_conn, $publisher_check) or die (mysqli_error($my_conn) . 'Publisher check failed: ');
+$book_result = mysqli_query($my_conn, $book_check) or die (mysqli_error($my_conn) . 'Book check failed: ');
+
+// if empty, create a new people entry first
+if (mysqli_num_rows($people_result) == 0) {
+    $people_insert_result = mysqli_query($my_conn, $people_insert)
+    or die (mysqli_error($my_conn) . 'people insert Query failed: ');
 }
 
-// Insert the publisher
-$result = mysqli_query($my_conn, $query3) or die (mysqli_error($my_conn) . 'Query failed: ');
-
-// See if the query failed
-if (mysqli_num_rows($result) == FALSE) {
-    echo "Sorry I couldn't insert the publisher " . $pname . " :'(<br>";
-    return 0;
+// check if author already exists, if not create an entry
+if (mysqli_num_rows($auth_result) == 0) {
+    //create author entry
+    $auth_insert_result = mysqli_query($my_conn, $auth_insert)
+    or die (mysqli_error($my_conn) . 'author insert Query failed: ');
 }
 
-// Insert the book now
-$result = mysqli_query($my_conn, $query1) or die (mysqli_error($my_conn) . 'Query failed: ');
-
-// See if the query failed
-if (mysqli_num_rows($result) == FALSE) {
-    echo "Sorry I couldn't insert the book " . $title . " :'(<br>";
-    return 0;
+// check if publisher exists, if not create an entry
+if (mysqli_num_rows($pub_result) == 0) {
+    //create author entry
+    $pub_insert_result = mysqli_query($my_conn, $pub_insert)
+    or die (mysqli_error($my_conn) . 'Publisher insert Query failed: ');
 }
 
-mysqli_free_result($result);
+if (mysqli_num_rows($book_result) == 0) {
+    //create author entry
+    $book_insert_result = mysqli_query($my_conn, $book_insert)
+    or die (mysqli_error($my_conn) . 'Book insert Query failed: ');
+    // finally add relevant writes entry
+    $aid_query = "SELECT aid
+              FROM author
+              WHERE name = '$name'";
+    $aid_result = mysqli_query($my_conn, $aid_query) or die (mysqli_error($my_conn) . 'Book check failed: ');
+
+    $write_insert = "INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('$isbn13', '$aid_result')";
+} else {
+    echo "This '" . $title . "' already exists";
+}
+
 mysqli_close($my_conn);

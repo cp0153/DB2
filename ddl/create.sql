@@ -52,7 +52,7 @@ CREATE TABLE book (
 
 # Customer table
 CREATE TABLE customer(
-  cid int NOT NULL,
+  cid int NOT NULL AUTO_INCREMENT,
   name VARCHAR(200) NOT NULL,
   address VARCHAR(200) NOT NULL,
   PRIMARY KEY pk_cust (cid),

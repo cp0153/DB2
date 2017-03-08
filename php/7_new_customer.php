@@ -22,13 +22,6 @@ if (!$my_conn) {
     exit;
 }
 
-// generate new cid
-$cid_query = "SELECT FLOOR(RAND() * 99999) AS cid
-              FROM customer
-              WHERE cid NOT IN (SELECT cid FROM customer)
-              LIMIT 1";
-$cid_result = mysqli_query($my_conn, $cid_query) or die (mysqli_error($my_conn) . 'CID Query failed: ');
-$cid = mysqli_fetch_array($cid_result);
 // check if new customer is already in the people database, if not create entry
 $people_check = "SELECT name 
                  FROM PEOPLE 
@@ -43,7 +36,7 @@ if (mysqli_num_rows($people_result) == 0) {
 }
 
 // Then insert into customer
-$cust_insert = "INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('" . $cid . "', '" . $name . "', '" . $address . "')";
+$cust_insert = "INSERT INTO `customer` (`name`, `address`) VALUES ('" . $name . "', '" . $address . "')";
 $cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
 
 echo "Entered data successfully\n";

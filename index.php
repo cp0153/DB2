@@ -107,6 +107,11 @@
     <br><br />
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
+    <ul>
+        <li><b>THIS QUERY IS WORKING.</b></li>
+        <li>Take user input, e.g. "Dan Brown", "1 Uni Ave, Lowell, MA, USA", "9784554300", "dbrown@aol.com"</li>
+        <li>Inserts a new row into the customer table</li>
+    </ul>
     <form action="php/7_new_customer.php" method="post">
         Enter new customer name: <input type="text" name="name"><br>
         Enter new customer address: <input type="text" name="address"><br>
@@ -146,6 +151,9 @@
 
         Enter the author's name: <input type="text" name="name"><br>
         Enter the author's address: <input type="text" name="address"><br>
+
+        Enter the author's telephone: <input type="text" name="telephone"><br>
+        Enter the author's email: <input type="text" name="email"><br>
 
         Enter the publisher's city: <input type="text" name="city"><br>
         Enter the publisher's state: <input type="text" name="state"><br>
