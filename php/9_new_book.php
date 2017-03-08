@@ -37,7 +37,7 @@ $state = ($_POST['state']);
 echo "ISBN13 entered: <b><u>$state</u></b><br>";
 
 $address = ($_POST['address']);
-echo "ISBN13 entered: <b><u>$address</u></b><br>";
+echo "ISBN13 entered: <b><u>$address</u></b><br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -49,21 +49,13 @@ if (!$my_conn) {
 }
 
 // this collects all of purchase history of the name provided
-$query1 = "INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) 
-VALUES ('$isbn13', '$title', '$year', '$category', '$pname', '$price')";
+$query1 = "INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('$isbn13', '$title', '$year', '$category', '$pname', '$price')";
 
-$query2 = "INSERT INTO `author` (`name`, `address`) VALUES ('". $name ."', '". $address ."')";
+$query2 = "INSERT INTO `author` (`name`, `address`) VALUES ('$name', '$address')";
 
-$query3 = "INSERT INTO `publisher` (`pname`, `city`, `state`) VALUES ('". $pname ."', '". $state ."', '". $address ."')";
+$query3 = "INSERT INTO `publisher` (`pname`, `city`, `state`) VALUES ('$pname', '$state', '$address')";
 
-$result = mysqli_query($my_conn, $query1) or die (mysqli_error($my_conn) . 'Query failed: ');
-
-// See if the query failed
-if (mysqli_num_rows($result) == FALSE) {
-    echo "Sorry I couldn't insert the book " . $title . " :'(<br>";
-    return 0;
-}
-
+// Insert the author
 $result = mysqli_query($my_conn, $query2) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
@@ -72,11 +64,21 @@ if (mysqli_num_rows($result) == FALSE) {
     return 0;
 }
 
+// Insert the publisher
 $result = mysqli_query($my_conn, $query3) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
 if (mysqli_num_rows($result) == FALSE) {
     echo "Sorry I couldn't insert the publisher " . $pname . " :'(<br>";
+    return 0;
+}
+
+// Insert the book now
+$result = mysqli_query($my_conn, $query1) or die (mysqli_error($my_conn) . 'Query failed: ');
+
+// See if the query failed
+if (mysqli_num_rows($result) == FALSE) {
+    echo "Sorry I couldn't insert the book " . $title . " :'(<br>";
     return 0;
 }
 
