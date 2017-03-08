@@ -110,6 +110,8 @@
     <form action="php/7_new_customer.php" method="post">
         Enter new customer name: <input type="text" name="name"><br>
         Enter new customer address: <input type="text" name="address"><br>
+        Enter new customer telephone: <input type="text" name="telephone"><br>
+        Enter new customer email: <input type="text" name="email"><br>
         <input type="submit">
     </form>
 

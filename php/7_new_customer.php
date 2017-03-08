@@ -9,13 +9,9 @@
 
 $name = ($_POST['name']);
 $address = ($_POST['address']);
+$telephone = ($_POST['telephone']);
+$email = ($_POST['email']);
 echo "The words the user entered is: <b><u>$name</u></b> <b><u>$address</u></b><br><br>";
-
-// generate new cid
-$cid = "SELECT FLOOR(RAND() * 99999) AS cid
-        FROM customer
-        WHERE cid NOT IN (SELECT cid FROM customer)
-        LIMIT 1";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -26,11 +22,25 @@ if (!$my_conn) {
     exit;
 }
 
+// generate new cid
+$cid_query = "SELECT FLOOR(RAND() * 99999) AS cid
+        FROM customer
+        WHERE cid NOT IN (SELECT cid FROM customer)
+        LIMIT 1";
+$cid_result = mysqli_query($my_conn, $cid_query) or die (mysqli_error($my_conn) . 'CID Query failed: ');
+
 // check if new customer is already in the people database, if not create entry
+$people_check = "SELECT '" . $name . "' FROM PEOPLE";
+$people_result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'People Query failed: ');
+
+// if empty, create a new people entry first
+if (mysqli_num_rows($people_result) == 0) {
+
+}
 
 // this collects all of purchase history of the name provided
 $query = "INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('" . $cid . "', '" . $name . "', '" . $address . "')";
-$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
 
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
