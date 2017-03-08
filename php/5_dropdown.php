@@ -7,8 +7,8 @@
  * Design a drop down menu so user can use it to select a year and find the title of the best selling book of that year.
  */
 
-$year = $_POST['years'];
-echo "The year the user select is: <b><u>$year</u></b> <br><br>";
+$year = $_POST['year'];
+echo "The year the user selected is: <b><u>$year</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 

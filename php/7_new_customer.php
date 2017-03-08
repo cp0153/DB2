@@ -26,6 +26,8 @@ if (!$my_conn) {
     exit;
 }
 
+// check if new customer is already in the people database, if not create entry
+
 // this collects all of purchase history of the name provided
 $query = "INSERT INTO `customer` (`cid`, `name`, `address`) VALUES ('" . $cid . "', '" . $name . "', '" . $address . "')";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
