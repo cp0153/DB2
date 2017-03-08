@@ -7,7 +7,7 @@
  * Design a drop down menu so user can use it to select a year and find the title of the best selling book of that year.
  */
 
-$year = $_POST['year'];
+$year = $_POST["years"];
 echo "The year the user selected is: <b><u>$year</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
@@ -20,12 +20,15 @@ if (!$my_conn) {
 }
 
 // this collects all of purchase history of the name provided
-$query = "select max(cnt) as bst, year 
-            from (
-            SELECT count(ISBN13) as cnt, year(datetime) as year 
-            from purchase
-            group by ISBN13
-            ) a";
+$query = "SELECT max(cnt) as bst, a.year, a.title
+                  FROM (
+                         SELECT count(purchase.ISBN13) as cnt, book.title, year(datetime) as year 
+                         FROM purchase 
+                         JOIN book ON book.ISBN13 = purchase.ISBN13 
+                         GROUP BY purchase.ISBN13, book.title, year 
+                         ORDER BY `cnt` DESC
+                       ) a
+                  WHERE a.year = '" . $year ."'";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
@@ -37,11 +40,13 @@ if (mysqli_num_rows($result) == 0) {
 // Results table
 echo "<br><table>";
 echo "<tr> <td><b>best seller</b></td> 
+<td><b>title</b></td> 
 <td><b>year</b></td> ";
 
 // If the query worked, return name, ISBN, book tile, Category, and price
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     echo "<tr><td>" . $row["bst"] . "</td>";
+    echo "<td>" . $row["title"] . "</td>";
     echo "<td>" . $row["year"] . "</td>";
     echo '</tr>';
 }
