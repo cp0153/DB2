@@ -20,13 +20,14 @@ if (!$my_conn) {
 }
 
 // this collects all of purchase history of the name provided
-$query = "select max(cnt) as bst, a.year, book.title
-                  from (
-                         SELECT count(ISBN13) as cnt, year(datetime) as year
-                         from purchase
-                         group by ISBN13, year
-                       ) a,
-                    book
+$query = "SELECT max(cnt) as bst, a.year, a.title
+                  FROM (
+                         SELECT count(purchase.ISBN13) as cnt, book.title, year(datetime) as year 
+                         FROM purchase 
+                         JOIN book ON book.ISBN13 = purchase.ISBN13 
+                         GROUP BY purchase.ISBN13, book.title, year 
+                         ORDER BY `cnt` DESC
+                       ) a
                   WHERE a.year = '" . $year ."'";
 $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
