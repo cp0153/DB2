@@ -136,6 +136,21 @@
     <li>Add a new book to the database. If the author and/or the publisher of the new book is not in the database,
         insert all information about the author and/or publisher as well.
     </li>
+    <form action="php/9_new_book.php" method="post">
+        Enter the ISBN13 of the book: <input type="text" name="isbn13"><br>
+        Enter the title of the book: <input type="text" name="title"><br>
+        Enter the year the book was published: <input type="text" name="year"><br>
+        Enter the category for the book: <input type="text" name="category"><br>
+        Enter the publisher of the book: <input type="text" name="pname"><br>
+        Enter the price of the book: <input type="text" name="price"><br>
+
+        Enter the author's name: <input type="text" name="name"><br>
+        Enter the author's address: <input type="text" name="address"><br>
+
+        Enter the publisher's city: <input type="text" name="city"><br>
+        Enter the publisher's state: <input type="text" name="state"><br>
+        <input type="submit">
+    </form>
 
     <br><br />
     <!-- Query 10 -->
