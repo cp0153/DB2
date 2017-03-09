@@ -7,7 +7,7 @@
  * Record the information that a customer has purchased a book.
  */
 
-$title = ($_POST['title']);
+$title = ($_POST['titles']);
 $cid = ($_POST['cid']);
 echo "Book title: <b><u>$title</u></b> <br>";
 echo "Customer ID (cid): <b><u>$cid</u></b> <br><br>";

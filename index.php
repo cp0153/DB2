@@ -76,7 +76,7 @@
 
     <form action="php/5_dropdown.php" method="post">
         <select name="years" id="years">
-            <?php include ('php/dropdown_menu.php'); ?>
+            <?php include('php/dropdown_menu_years.php'); ?>
         </select>
         <input type="submit">
     </form>
@@ -89,7 +89,10 @@
         <li>They also enter their CID #, e.g. "10002"</li>
     </ul>
     <form action="php/6_record_purchase.php" method="post">
-        Enter the book you are purchasing: <input type="text" name="title"><br>
+        <select name="titles" id="titles">
+            <?php include('php/dropdown_menu_titles.php'); ?>
+        </select>
+        <br>
         Enter your cid: <input type="text" name="cid"><br>
         <input type="submit">
     </form>
@@ -163,7 +166,10 @@
     </ul>
 
     <form action="php/10_delete_book.php" method="post">
-        Enter the title of the book you would like to delete: <input type="text" name="title"><br>
+        <select name="titles" id="titles">
+            <?php include('php/dropdown_menu_titles.php'); ?>
+        </select>
+        <br>
         <input type="submit">
     </form>
 </ol>

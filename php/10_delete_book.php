@@ -10,7 +10,7 @@
  * sudo cp -r . /opt/lampp/htdocs/Books
  */
 
-$title = ($_POST['title']);
+$title = ($_POST['titles']);
 echo "The words the user entered is: <b><u>$title</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
