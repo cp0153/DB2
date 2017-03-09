@@ -23,37 +23,39 @@ if (!$my_conn) {
 }
 
 // check if new customer is already in the people database, if not create entry
-$people_check = "SELECT name 
+$people_check = "SELECT name, address
                  FROM people 
                  WHERE name = '" . $name . "'";
 $people_result = mysqli_query($my_conn, $people_check) or die (mysqli_error($my_conn) . 'People Query failed: ');
 
-if (!$people_result) {
-    echo "ERROR: SELECT name query failed.";
-    return -1;
-}
-
 // if empty, create a new people entry first
 if (mysqli_num_rows($people_result) == 0) {
     $insert_people = "INSERT INTO `people` (`name`, `address`, `telephone`, `email`)
-                      VALUES  ('". $name ."', '". $address . "', '". $telephone ."',  '". $email ."')";
+                      VALUES  ('" . $name . "', '" . $address . "', '" . $telephone . "',  '" . $email . "')";
     $people_insert_result = mysqli_query($my_conn, $insert_people) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
+    echo "new person $name successfully entered into person table.<br>";
+} else {
+    echo "already on the people table<br>";
+}
 
-    if (!$people_insert_result) {
-        echo "ERROR: unable to insert person into the people table.";
-        return -1;
+// check if customer entry already exists
+$customer_check = "SELECT name 
+                   FROM customer 
+                   WHERE name = '$name'";
+$customer_result = mysqli_query($my_conn, $customer_check) or die (mysqli_error($my_conn) . 'People Query failed: ');
+// Then insert into customer if no rows are returned here
+if (mysqli_num_rows($customer_result) == 0) {
+
+    // if the person is already on people, use the address on the people table instead of user input
+    if (mysqli_num_rows($people_result) == 1) {
+        $address = mysqli_fetch_row($people_result)[1];
+        echo "$address<br>";
     }
+    $cust_insert = "INSERT INTO `customer` (`name`, `address`) VALUES ('$name', '$address')";
+    $cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . '<br>Customer insert Query failed! ');
+    echo "new customer $name successfully entered into customer table.<br>";
+} else {
+    echo "New customer insert failed, if person already exists on people table, make sure their information matches 
+          the people table<br>";
 }
-
-// Then insert into customer
-$cust_insert = "INSERT INTO `customer` (`name`, `address`) VALUES ('" . $name . "', '" . $address . "')";
-$cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . '<br>Customer insert Query failed! ');
-
-if (!$cust_insert_result) {
-    echo "ERROR: unable to insert customer into the customer table.";
-    return -1;
-}
-
-echo "Entered data successfully\n";
-
 mysqli_close($my_conn);

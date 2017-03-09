@@ -104,6 +104,7 @@ $book_result = mysqli_query($my_conn, $book_check) or die (mysqli_error($my_conn
 if (mysqli_num_rows($people_result) == 0) {
     $people_insert_result = mysqli_query($my_conn, $people_insert)
     or die (mysqli_error($my_conn) . 'people insert Query failed: ');
+    echo "New people entry created for $name.<br>";
 }
 
 // check if author already exists, if not create an entry
@@ -111,6 +112,7 @@ if (mysqli_num_rows($auth_result) == 0) {
     //create author entry
     $auth_insert_result = mysqli_query($my_conn, $auth_insert)
     or die (mysqli_error($my_conn) . 'author insert Query failed: ');
+    echo "New author entry created for $name.<br>";
 }
 
 // check if publisher exists, if not create an entry
@@ -118,6 +120,7 @@ if (mysqli_num_rows($pub_result) == 0) {
     //create author entry
     $pub_insert_result = mysqli_query($my_conn, $pub_insert)
     or die (mysqli_error($my_conn) . 'Publisher insert Query failed: ');
+    echo "New publisher entry for $pname.<br>";
 }
 
 if (mysqli_num_rows($book_result) == 0) {
@@ -129,10 +132,12 @@ if (mysqli_num_rows($book_result) == 0) {
                   FROM author
                   WHERE name = '$name'";
     $aid_result = mysqli_query($my_conn, $aid_query) or die (mysqli_error($my_conn) . 'Book check failed: ');
-
+    $aid_result = mysqli_fetch_row($aid_result)[0];
     $write_insert = "INSERT INTO `writes` (`ISBN13`, `aid`) VALUES ('$isbn13', '$aid_result')";
-} else {
-    echo "This '" . $title . "' already exists";
-}
+    $write_result = mysqli_query($my_conn, $write_insert) or die (mysqli_error($my_conn) . 'Book insert failed: ');
+    echo "New book entry created for $title.<br>";
+    } else {
+        echo "This '" . $title . "' already exists";
+    }
 
 mysqli_close($my_conn);

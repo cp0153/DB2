@@ -17,11 +17,14 @@ if (!$my_conn) {
 }
 
 // returns the name of the authors who purchased their own book from this store
-$query = "SELECT a.name
-          FROM writes w join author a
-          ON w.aid = a.aid
-          WHERE a.name IN (SELECT name FROM 
-                          (SELECT name FROM purchase JOIN customer ON purchase.cid = customer.cid WHERE customer.cid)b )";
+$query = "SELECT a.name FROM purchase p
+  join customer c
+    ON p.cid = c.cid
+  join author a
+    ON a.name = c.name
+  JOIN writes w
+    ON p.ISBN13 = w.ISBN13 AND w.aid = a.aid;";
+
 $result = mysqli_query($my_conn,$query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 echo '<b>Name</b><br>';

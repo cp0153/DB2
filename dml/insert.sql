@@ -12,8 +12,7 @@ INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Antoine 
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('George Orwell', 'London, United Kingdom', '1115555555', 'George_Orwell@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Elena Ferrante', 'Naples, Italy', '1265555555', 'Elena_Ferrante@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('J.K. Rowling', 'London, UK', '9895555555', 'JK_Rowling@gmail.com');
-INSERT INTO `people` (`name`, `address`,
- `telephone`, `email`) VALUES ('Agatha Christie', 'Paris, France', '4855555555', 'Agatha_Christie@gmail.com');
+INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Agatha Christie', 'Paris, France', '4855555555', 'Agatha_Christie@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Muriel Barbery', 'Lowell, MA', '9785555555', 'Muriel_Barbery@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('Jane Doe', 'Bolton, MA', '9785559999', 'Jane_Doe@gmail.com');
 INSERT INTO `people` (`name`, `address`, `telephone`, `email`) VALUES ('John Doe', 'Andover, MA', '9785556666', 'John_Doe@gmail.com');
@@ -58,21 +57,21 @@ INSERT INTO `author` (`name`, `address`) VALUES ('Elena Ferrante', 'Naples, Ital
 
 
 # Insert statements for Books table
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781603092661', 'A Matter of Life', '2013-07-02', 'Graphic Novels', 'Top Shelf Productions', '14.95');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781594633669', 'The Girl on the Train', '2015-01-13', 'Psychological Thriller', 'Riverhead Books', '11.04');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781476754451', 'Mr. Mercedes', '2014-06-03', 'Hardboiled', 'Scribner', '9.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781408704950', 'The Goldfinch', '2013-07-13', 'Graphic Novel', 'Little, Brown and Company', '8.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537858', 'Inferno', '2013-05-14', 'mystery thriller', 'Doubleday', '4.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537859', 'Inferno 2', '2014-05-14', 'mystery thriller', 'Doubleday', '8.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537860', 'Inferno 3: the empire strikes back', '2015-05-14', 'mystery thriller', 'Doubleday', '9.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537861', 'Inferno 4: a new hope', '2016-05-14', 'mystery thriller', 'Doubleday', '19.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537862', 'Inferno 5: return of the jedi', '2017-05-14', 'mystery thriller', 'Doubleday', '29.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781933372600', 'The Elegance of the Hedgehog', '2008-08-26', 'Fiction', 'Random House', '7.89');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780007527502', 'Murder on the Orient Express', '2013-12-09', 'Thriller', 'Wiley', '9.87');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780545010221', 'Harry Potter and the Deathly Hallows', '2007-07-21', 'Fantasy', 'Scholastic', '15.98');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780156012195', 'The Little Prince', '2000-05-15', 'Fiction', 'Random House', '12.76');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780452284234', '1984', '2003-06-05', 'Fiction', 'ThomsonReuters', '4.99');
-INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781609450786', 'My Brilliant Friend', '2012-11-10', 'Fiction', 'Wiley', '7.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781603092661', 'A Matter of Life', '2013', 'Graphic Novels', 'Top Shelf Productions', '14.95');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781594633669', 'The Girl on the Train', '2015', 'Psychological Thriller', 'Riverhead Books', '11.04');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781476754451', 'Mr. Mercedes', '2014', 'Hardboiled', 'Scribner', '9.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781408704950', 'The Goldfinch', '2013', 'Graphic Novel', 'Little, Brown and Company', '8.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537858', 'Inferno', '2013', 'mystery thriller', 'Doubleday', '4.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537859', 'Inferno 2', '2014', 'mystery thriller', 'Doubleday', '8.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537860', 'Inferno 3: the empire strikes back', '2015', 'mystery thriller', 'Doubleday', '9.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537861', 'Inferno 4: a new hope', '2016', 'mystery thriller', 'Doubleday', '19.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780385537862', 'Inferno 5: return of the jedi', '2017', 'mystery thriller', 'Doubleday', '29.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781933372600', 'The Elegance of the Hedgehog', '2008', 'Fiction', 'Random House', '7.89');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780007527502', 'Murder on the Orient Express', '2013', 'Thriller', 'Wiley', '9.87');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780545010221', 'Harry Potter and the Deathly Hallows', '2007', 'Fantasy', 'Scholastic', '15.98');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780156012195', 'The Little Prince', '2000', 'Fiction', 'Random House', '12.76');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9780452284234', '1984', '2003', 'Fiction', 'ThomsonReuters', '4.99');
+INSERT INTO `book` (`ISBN13`, `title`, `year`, `category`, `pname`, `price`) VALUES ('9781609450786', 'My Brilliant Friend', '2012', 'Fiction', 'Wiley', '7.99');
 
 # Insert statements for the customer table
 INSERT INTO `customer` (`name`, `address`) VALUES ('Jane Doe', 'Bolton, MA');
