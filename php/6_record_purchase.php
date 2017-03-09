@@ -8,9 +8,9 @@
  */
 
 $title = ($_POST['titles']);
-$cid = ($_POST['cid']);
+$name = ($_POST['names']);
 echo "Book title: <b><u>$title</u></b> <br>";
-echo "Customer ID (cid): <b><u>$cid</u></b> <br><br>";
+echo "Customer name: <b><u>$name</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
 
@@ -44,8 +44,31 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 echo '</table><br>';        // End of results table
 
+// Get customer's CID
+$query = "SELECT cid
+          FROM customer
+          WHERE customer.name = '". $name ."'";
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
+
+// See if the query failed
+if (mysqli_num_rows($result) == 0) {
+    echo "Sorry, I couldn't find any customers with the name: $name :'(<br>";
+    return 0;
+}
+
 // Get the current time for recording the purchase datetime
 $datetime = date_create()->format('Y-m-d H:i:s');
+
+// Results table
+echo "<table>";
+echo "<tr> <td><b>CID</b> for <b>$name</b></td>";
+
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    echo "<tr><td>" . $row["cid"] . "</td></tr>";
+    $cid = $row["cid"];
+}
+
+echo '</table><br>';        // End of results table
 
 // Record that a customer has purchased a book.
 // Need to record the Book's ISBN13, the customer ID (cid) and the datetime that the book was purchased at.

@@ -92,8 +92,9 @@
         <select name="titles" id="titles">
             <?php include('php/dropdown_menu_titles.php'); ?>
         </select>
-        <br>
-        Enter your cid: <input type="text" name="cid"><br>
+        <select name="names" id="names">
+            <?php include('php/dropdown_menu_customers.php'); ?>
+        </select><br>
         <input type="submit">
     </form>
 
