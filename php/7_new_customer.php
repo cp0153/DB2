@@ -33,9 +33,9 @@ if (mysqli_num_rows($people_result) == 0) {
     $insert_people = "INSERT INTO `people` (`name`, `address`, `telephone`, `email`)
                       VALUES  ('" . $name . "', '" . $address . "', '" . $telephone . "',  '" . $email . "')";
     $people_insert_result = mysqli_query($my_conn, $insert_people) or die (mysqli_error($my_conn) . 'Customer insert Query failed: ');
-    echo "new person $name successfully entered into person table.<br>";
+    echo "New person $name successfully entered into person table.<br>";
 } else {
-    echo "already on the people table<br>";
+    echo "This person is already on the people , no need to insert into the person table.<br>";
 }
 
 // check if customer entry already exists
@@ -53,9 +53,9 @@ if (mysqli_num_rows($customer_result) == 0) {
     }
     $cust_insert = "INSERT INTO `customer` (`name`, `address`) VALUES ('$name', '$address')";
     $cust_insert_result = mysqli_query($my_conn, $cust_insert) or die (mysqli_error($my_conn) . '<br>Customer insert Query failed! ');
-    echo "new customer $name successfully entered into customer table.<br>";
+    echo "New customer $name successfully entered into customer table.<br>";
 } else {
-    echo "New customer insert failed, if person already exists on people table, make sure their information matches 
+    echo "New customer insert failed. If the person already exists on people table, make sure their information matches 
           the people table<br>";
 }
 mysqli_close($my_conn);

@@ -18,7 +18,7 @@
     <li>Find the names of authors who have purchased a book written by themselves. (aid and cid will not be the same).
     </li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
+        <li>No UI is required for this query, just click the submit button for the query results.</li>
     </ul>
     <form action="php/1_author_purch.php" method="post">
         <input type="submit">
@@ -26,8 +26,8 @@
 
     <br>
     <!-- Query 2 -->
-    <li>User input one author name, find all the books written by the author(s).</li><ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
+    <li>User input one author name, find all the books written by the author(s).</li>
+    <ul>
         <li>Take user input, e.g. 'Dan Brown'.</li>
         <li>Find all books written by 'Dan Brown'.</li>
     </ul>
@@ -41,7 +41,6 @@
     <!-- Query 3 -->
     <li>User input one customer name, find purchase history of the customer(s).</li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Take user input, e.g. 'Stephen King'.</li>
         <li>Find all purchases by 'Stephen King'.</li>
     </ul>
@@ -56,7 +55,6 @@
         words.
     </li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Take user input, e.g. 'Inferno'</li>
         <li>Print book info (title, year, category, publisher, and price)</li>
     </ul>
@@ -71,7 +69,6 @@
     <li>Design a drop down menu so user can use it to select a year and find the title of the best selling book of that
         year.
         <ul>
-            <li><b>THIS QUERY IS WORKING.</b></li>
             <li>Take user input, the selected option of a dynamically populated dropdown menu</li>
             <li>prints the name of the best selling book in that year</li>
         </ul>
@@ -88,7 +85,6 @@
     <!-- Query 6 -->
     <li>Record the information that a CUSTOMER has purchased a book.</li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Customer enters the book title, e.g. "The Little Prince"</li>
         <li>They also enter their CID #, e.g. "10002"</li>
     </ul>
@@ -102,7 +98,6 @@
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Take user input, e.g. "Dan Brown", "1 Uni Ave, Lowell, MA, USA", "9784554300", "dbrown@aol.com"</li>
         <li>Inserts a new row into the customer table</li>
     </ul>
@@ -118,7 +113,6 @@
     <!-- Query 8 -->
     <li>User input one name and address, update the address in people, and author or customer table if applicable.</li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Take user input, e.g. "Dan Brown", "1 Uni Ave, Lowell, MA, USA"</li>
         <li>or "Daniel Fuentes", "Lowell, MA""</li>
         <li>Update the address in the People table, as well as the author or customer table.</li>
@@ -158,7 +152,6 @@
     <!-- Query 10 -->
     <li>Delete a book. If the author of the book has not written other books, delete the author as well.</li>
     <ul>
-        <li><b>THIS QUERY IS WORKING.</b></li>
         <li>Enter the title of a book, e.g. "The Little Prince"</li>
         <li>Find the book's author, count how many books he has. If == 1, then delete the author too.</li>
         <li>Delete the book now that we've searched the for the author.</li>

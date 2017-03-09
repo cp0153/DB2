@@ -106,8 +106,6 @@ echo "<tr><td>" . $book_count . "</td></tr></table><br>";
 
 // If book count < 2 delete author
 if ($book_count < 2) {
-    echo "Since book count is 1, we need to delete this author :'( <br>";
-
     // First delete the author's person entry
     $query = "DELETE FROM people
               WHERE people.name = '" . $author_name . "'";
@@ -129,6 +127,9 @@ if ($book_count < 2) {
         echo "ERROR: unable to delete the author entry for author: $author_name!";
         return 0;
     }
+
+    // Author was deleted.
+    echo "<b>$author_name</b>, author of <b>\"$title\"</b>, successfully deleted.<br>";
 }
 
 // Now we can delete the book by ISBN13 number
@@ -143,4 +144,6 @@ if (!$result) {
 }
 
 // Finally, we're done!
+echo "The book <b>\"$title\"</b> was successfully deleted.<br>";
+
 mysqli_close($my_conn);
