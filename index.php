@@ -153,7 +153,12 @@
     <li>Delete a book. If the author of the book has not written other books, delete the author as well.</li>
     <ul>
         <li>Enter the title of a book, e.g. "The Little Prince"</li>
-        <li>Find the book's author, count how many books he has. If == 1, then delete the author too.</li>
+        <li>Find the book's author, count how many books he has. If == 1, then we need delete the author too.</li>
+        <li>However, before we delete the author, we must check to see if he has purchased any books. If he
+            has, we will only delete his author table entry.</li>
+        <li>If the author has not made any purchases, we will delete his person table entry as this will completely
+            delete him from the database, as our people table will cascade delete, which will also delete the
+            author's author table entry as well.</li>
         <li>Delete the book now that we've searched the for the author.</li>
     </ul>
 
