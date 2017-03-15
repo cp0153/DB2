@@ -9,7 +9,7 @@
  *
  */
 
-//    ISBN13 entered: 9780007117116
+//echo "</b>Sample ISBN13 : 9780007117116<br>";
 //     Title entered: The Fellowship of the Ring the Lord of the Rings
 //      Year entered: 1955
 //  Category entered: Epic High Fantasy

@@ -102,7 +102,7 @@
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
     <ul>
-        <li>Take user input, e.g. "Dan Brown", "1 Uni Ave, Lowell, MA, USA", "9784554300", "dbrown@aol.com"</li>
+        <li>Take user input, e.g. "John Snow", "1 Uni Ave, Lowell, MA, USA", "9784554300", "dbrown@aol.com"</li>
         <li>Inserts a new row into the customer table</li>
     </ul>
     <form action="php/7_new_customer.php" method="post">
@@ -123,7 +123,8 @@
     </ul>
 
     <form action="php/8_input_name.php" method="post">
-        Enter a name: <input type="text" name="name"><br>
+        Enter a name: <select name="name" id="name">
+            <?php include('php/dropdown_menu_customers.php'); ?><br>
         Enter an address: <input type="text" name="address"><br>
         <input type="submit">
     </form>
@@ -131,8 +132,22 @@
     <br>
     <!-- Query 9 -->
     <li>Add a new book to the database. If the author and/or the publisher of the new book is not in the database,
-        insert all information about the author and/or publisher as well.
-    </li>
+        insert all information about the author and/or publisher as well.</li>
+    <ul>
+        <li>Sample ISBN13: 9780007117116</li>
+        <li>Sample Title: The Fellowship of the Ring the Lord of the Rings</li>
+        <li>Sample Year entered: 1955</li>
+        <li>Sample Category: Epic High Fantasy</li>
+        <li>Sample Publisher: George Allen & Unwin</li>
+        <li>Sample Price: 199.99</li>
+        <li>Sample Auth Name: J. R. R. Tolkien</li>
+        <li>Sample Auth addre: UK</li>
+        <li>Sample Auth phone: 5555555555</li>
+        <li>Sample Auth email: jrr_tolkien@gmail.com</li>
+        <li>Sample Pub city: South West England</li>
+        <li>Sample Pub state: UK</li>
+    </ul>
+
     <form action="php/9_new_book.php" method="post">
         Enter the ISBN13 of the book: <input type="text" name="isbn13"><br>
         Enter the title of the book: <input type="text" name="title"><br>
