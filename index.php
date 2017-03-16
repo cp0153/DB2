@@ -85,8 +85,8 @@
     <!-- Query 6 -->
     <li>Record the information that a CUSTOMER has purchased a book.</li>
     <ul>
-        <li>Customer enters the book title, e.g. "The Little Prince"</li>
-        <li>They also enter their CID #, e.g. "10002"</li>
+        <li>Customer selects the book title, e.g. "The Little Prince"</li>
+        <li>They also select their name, e.g. "Stephen King"</li>
     </ul>
     <form action="php/6_record_purchase.php" method="post">
         <select name="titles" id="titles">
@@ -102,7 +102,7 @@
     <!-- Query 7 -->
     <li>Add a new customer to the database.</li>
     <ul>
-        <li>Take user input, e.g. "John Snow", "1 Uni Ave, Lowell, MA, USA", "9784554300", "dbrown@aol.com"</li>
+        <li>Take user input, e.g. "John Snow", "1 Uni Ave, Lowell, MA, USA", "9784554300", "jsnow@aol.com"</li>
         <li>Inserts a new row into the customer table</li>
     </ul>
     <form action="php/7_new_customer.php" method="post">
