@@ -8,12 +8,12 @@ if (!$my_conn) {
     exit;
 }
 
-$options = "SELECT DISTINCT name as name from customer";
+$options = "SELECT DISTINCT name as name from author";
 $result = mysqli_query($my_conn, $options) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
-    echo "Sorry, no customers found! :'(<br>";
+    echo "Sorry, no authors found! :'(<br>";
     return 0;
 }
 $menu=" ";

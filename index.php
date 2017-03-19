@@ -33,7 +33,9 @@
     </ul>
 
     <form action="php/2_input_authors.php" method="post">
-        Enter an author's name: <input type="text" name="name"><br>
+        <select name="name" id="name">
+            <?php include('php/dropdown_menu_authors.php'); ?>
+        </select><br>
         <input type="submit">
     </form>
 
@@ -45,7 +47,9 @@
         <li>Find all purchases by 'Stephen King'.</li>
     </ul>
     <form action="php/3_input_cust_name.php" method="post">
-        Enter a customer's name: <input type="text" name="name"><br>
+        <select name="customer" id="customer">
+            <?php include('php/dropdown_menu_customers.php'); ?>
+        </select><br>
         <input type="submit">
     </form>
 
@@ -77,7 +81,7 @@
     <form action="php/5_dropdown.php" method="post">
         <select name="years" id="years">
             <?php include('php/dropdown_menu_years.php'); ?>
-        </select>
+        </select><br>
         <input type="submit">
     </form>
 
@@ -90,7 +94,7 @@
     </ul>
     <form action="php/6_record_purchase.php" method="post">
         <select name="titles" id="titles">
-            <?php include('php/dropdown_menu_titles.php'); ?>
+            <?php include('php/dropdown_menu_titles_prices.php'); ?>
         </select>
         <select name="names" id="names">
             <?php include('php/dropdown_menu_customers.php'); ?>
@@ -123,8 +127,9 @@
     </ul>
 
     <form action="php/8_input_name.php" method="post">
-        Enter a name: <select name="name" id="name">
-            <?php include('php/dropdown_menu_customers.php'); ?><br>
+        <select name="name" id="name">
+            <?php include('php/dropdown_menu_customers.php'); ?>
+        </select><br>
         Enter an address: <input type="text" name="address"><br>
         <input type="submit">
     </form>

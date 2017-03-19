@@ -7,7 +7,7 @@
  * User input one customer name, find purchase history of the customer(s).
  */
 
-$name = ($_POST['name']);
+$name = ($_POST['customer']);
 echo "The words the user entered is: <b><u>$name</u></b> <br><br>";
 
 $my_conn = mysqli_connect("localhost", "root", "", "bookdb");
@@ -31,7 +31,7 @@ $result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query
 
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
-    echo "Sorry I couldn't find anyone under $name :'(<br>";
+    echo "Sorry I couldn't find purchases for $name :'(<br>";
     return 0;
 }
 

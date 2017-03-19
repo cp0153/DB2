@@ -8,18 +8,19 @@ if (!$my_conn) {
     exit;
 }
 
-$options = "SELECT DISTINCT name as name from customer";
-$result = mysqli_query($my_conn, $options) or die (mysqli_error($my_conn) . 'Query failed: ');
+$query = "SELECT DISTINCT title as title, price as price from book";
+$result = mysqli_query($my_conn, $query) or die (mysqli_error($my_conn) . 'Query failed: ');
 
 // See if the query failed
 if (mysqli_num_rows($result) == 0) {
-    echo "Sorry, no customers found! :'(<br>";
+    echo "Sorry, no titles were found! :'(<br>";
     return 0;
 }
+
 $menu=" ";
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
-    $menu .="<option>" . $row['name'] . "</option>";
+    $menu .="<option>" . $row['title'] . " -- $" . $row['price'] . "</option>";
 }
 // Output dropdown menu
 echo $menu;

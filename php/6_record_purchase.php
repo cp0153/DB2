@@ -7,8 +7,16 @@
  * Record the information that a customer has purchased a book.
  */
 
-$title = ($_POST['titles']);
+// Title with " -- $PRICE" added, e.g. "Murder on the Orient Express -- $9.87"
+$title_price = ($_POST['titles']);
+
+// Slice the string to get JUST the title e.g. "Murder on the Orient Express"
+// https://stackoverflow.com/questions/14601364/php-cut-string-at-specific-character
+$title = substr($title_price, 0, strpos($title_price, ' -- $'));
+
+// Customer name, e.g. "Cathy S. Castillo"
 $name = ($_POST['names']);
+
 echo "Book title: <b><u>$title</u></b> <br>";
 echo "Customer name: <b><u>$name</u></b> <br><br>";
 
