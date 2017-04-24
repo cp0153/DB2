@@ -14,6 +14,12 @@ $title_price = ($_POST['titles']);
 // https://stackoverflow.com/questions/14601364/php-cut-string-at-specific-character
 $title = substr($title_price, 0, strpos($title_price, ' -- $'));
 
+// Modified for Query 6 on the Android side of things
+// If the title is empty, then we just gotta run this hack to fix it!
+if(!$title) {
+    $title = ($_POST['titles']);
+}
+
 // Customer name, e.g. "Cathy S. Castillo"
 $name = ($_POST['names']);
 
